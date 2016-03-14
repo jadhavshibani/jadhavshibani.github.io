@@ -32,7 +32,8 @@
       $(document).ready(function () {
         cartodb.createVis('map', 'https://shibani.cartodb.com/api/v2/viz/cfc86072-e0c2-11e5-a6b7-0e3ff518bd15/viz.json',{
             cartodb_logo: false
-            
+        });
+      });
              $('.neighbourhood').change(function () {
           var neighbourhood = $(this).val();
           var sql;
@@ -47,8 +48,7 @@
           dataLayer.setSQL(sql);
           
              });
-            });
-      });
+            
     </script>
     </head>
  
