@@ -32,6 +32,21 @@
       $(document).ready(function () {
         cartodb.createVis('map', 'https://shibani.cartodb.com/api/v2/viz/cfc86072-e0c2-11e5-a6b7-0e3ff518bd15/viz.json',{
             cartodb_logo: false
+            
+             $('.neighbourhood').change(function () {
+          var neighbourhood = $(this).val();
+          var sql;
+          if (neighbourhood === 'all') {
+            // if borough is 'all', reset SQL to the original
+            sql = "SELECT * FROM san_fran_listings";
+          }
+          else {
+            // else, select only features with the neighbourhood field set to the chosen borough
+            sql = "SELECT * FROM san_fran_listings WHERE neighbourhood = '" + neighbourhood + "'";
+          }
+          dataLayer.setSQL(sql);
+          
+          
             });
       });
     </script>
@@ -55,6 +70,7 @@
 <br/>
 <form action="neighbourhood.php">
     <select name="neighbourhood">
+        <option>All</option>
         <option>Seacliff</option>
         <option>Haight Ashbury</option>
         <option selected>select neighbourhood</option>
