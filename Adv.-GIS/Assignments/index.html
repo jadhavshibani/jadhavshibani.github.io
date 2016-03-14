@@ -40,7 +40,7 @@
       // Initialize map from CartoDB
         cartodb.createVis('map', 'https://shibani.cartodb.com/api/v2/viz/cfc86072-e0c2-11e5-a6b7-0e3ff518bd15/viz.json'){
             cartodb_logo: false
-        });
+        };
       });
        .done(function (vis, layers) {
             // Store the data layer for later:
@@ -79,11 +79,9 @@
 <a href="https://www.airbnb.com/"/>
     <img width="200" height="50" src="http://blogs-images.forbes.com/davidvinjamuri/files/2014/07/airbnb_horizontal_lockup_print.jpg"/>
 </a>
-<br/><br/><br/>
+
 <div id="map"></div>
-<br/>
-<form action="neighbourhood.php">
-    <select name="neighbourhood">
+    <select class="neighbourhood">
         <option>All</option>
         <option>Seacliff</option>
         <option>Haight Ashbury</option>
