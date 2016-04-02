@@ -18,6 +18,7 @@
             //  * layers[0] is the base layer (eg OpenStreetMap)
             //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
             dataLayer = layers[1].getSubLayer(0)+(1);
+            dataLayer.setSQL(sql);
           });
       });
     </script>
@@ -27,6 +28,10 @@
         height: 100%;
         margin: 0;
         padding: 0;
+        width: 100%;
+      }
+    #interactive_map {
+        height: 500px;
         width: 100%;
       }
     </style>
