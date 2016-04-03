@@ -2,23 +2,20 @@
 <html>
   <head>
 
-    <script src="//code.jquery.com/jquery-2.1.1.min.js">
-                            // load js and cartodb libraries.
-    </script>
-        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js">
-    </script>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
+      <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+      
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"> </script>
                              
-    <script>
-                             // // Initialize map from CartoDB: create the map and store the data layer for later
+    <script>// // Initialize map from CartoDB: create the map and store the data layer for later
          var dataLayer;
-      $(document).ready(function () {
-        cartodb.createVis('interactive_map', 'https://shibani.cartodb.com/api/v2/viz/96cc89f0-9a14-11e5-92da-0e3a376473ab/viz.json', {
+         $(document).ready(function () {
+         cartodb.createVis('interactive_map', 'https://shibani.cartodb.com/api/v2/viz/96cc89f0-9a14-11e5-92da-0e3a376473ab/viz.json', {
             cartodb_logo: false , fullscreen: true , mobile_layout: true })
-                            //Initialize layers
+  //Initialize layers
        .done(function (vis, layers) {
-            //  * layers[0] is the base layer (eg OpenStreetMap)
-            //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+  //  * layers[0] is the base layer (eg OpenStreetMap)
+  //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
             dataLayer = layers[1].getSubLayer(0)+(1);
             dataLayer.setSQL(sql);
           });
@@ -47,7 +44,6 @@
         margin: 0;
         padding: 0;
         width: 100%;
-        position: absolute;
       }
       /*----- Cartodb Map -----*/
     #interactive_map {
