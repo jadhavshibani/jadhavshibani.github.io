@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
       <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-      
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"> </script>
                              
     <script>// // Initialize map from CartoDB: create the map and store the data layer for later
@@ -22,17 +20,14 @@
       });
     </script>
     <script>
-                              // Tabs refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"
+  // Tabs refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"
       $(document).ready(function() {
     $('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = $(this).attr('href');
- 
-        // Show/Hide Tabs
+ // Show/Hide Tabs
         $('.tabs ' + currentAttrValue).fadeIn(350).siblings().hide();
- 
-        // Change/remove current tab to active
+ // Change/remove current tab to active
         $(this).parent('li').addClass('active').siblings().removeClass('active');
- 
         e.preventDefault();
     });
 });
@@ -111,7 +106,7 @@
   </head>
   
   <body>
-    <div id="interactive_map">
+    <div id="interactive_map"></div>
     
       <div class="main_title"> 
         <h2> <span>[RE]settlement</span>
@@ -146,7 +141,7 @@
         </div>
     </div>
 </div>
-</div>
+
   </body>
         
         
