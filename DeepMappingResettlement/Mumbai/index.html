@@ -14,14 +14,13 @@
          var dataLayer;
       $(document).ready(function () {
         cartodb.createVis('interactive_map', 'https://shibani.cartodb.com/api/v2/viz/96cc89f0-9a14-11e5-92da-0e3a376473ab/viz.json', {
-            cartodb_logo: false );
+            cartodb_logo: false });
                             //Initialize layers
        .done(function (vis, layers) {
             //  * layers[0] is the base layer (eg OpenStreetMap)
             //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
             dataLayer = layers[1].getSubLayer(0)+(1);
             dataLayer.setSQL(sql);
-              }
           });
       });
     </script>
