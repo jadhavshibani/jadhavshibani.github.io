@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-                              // load libraries.
+
     <script src="//code.jquery.com/jquery-2.1.1.min.js">
+                            // load js and cartodb libraries.
     </script>
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js">
     </script>
-                             // Initialize map from CartoDB: create the map and store the data layer for later
+                             
     <script>
-                             // Initialize map
+                             // // Initialize map from CartoDB: create the map and store the data layer for later
          var dataLayer;
       $(document).ready(function () {
         cartodb.createVis('interactive_map', 'https://shibani.cartodb.com/api/v2/viz/96cc89f0-9a14-11e5-92da-0e3a376473ab/viz.json')
