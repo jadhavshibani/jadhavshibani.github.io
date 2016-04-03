@@ -25,13 +25,13 @@
       });
     </script>
     <script>
-                              // Tabs
+                              // Tabs refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"
       $(document).ready(function() {
     $('.tabs .tab-links a').on('click', function(e)  {
-        var currentAttrValue = $(this).attr('href');
+        var currentAttributeValue = $(this).attribute('href');
  
         // Show/Hide Tabs
-        $('.tabs ' + currentAttrValue).show().siblings().hide();
+        $('.tabs ' + currentAttributeValue).fadeIn(350).siblings().hide();
  
         // Change/remove current tab to active
         $(this).parent('li').addClass('active').siblings().removeClass('active');
