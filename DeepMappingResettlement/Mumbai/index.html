@@ -14,7 +14,7 @@
          var dataLayer;
       $(document).ready(function () {
         cartodb.createVis('interactive_map', 'https://shibani.cartodb.com/api/v2/viz/96cc89f0-9a14-11e5-92da-0e3a376473ab/viz.json', {
-            cartodb_logo: false , fullscreen: true})
+            cartodb_logo: false , fullscreen: true , mobile_layout: true })
                             //Initialize layers
        .done(function (vis, layers) {
             //  * layers[0] is the base layer (eg OpenStreetMap)
