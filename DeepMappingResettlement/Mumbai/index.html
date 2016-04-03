@@ -47,13 +47,21 @@
         margin: 0;
         padding: 0;
         width: 100%;
+        position: absolute;
       }
       /*----- Cartodb Map -----*/
     #interactive_map {
         height: 650px;
         width: 100%;
         padding-bottom: 10px;
+        clear: left;
       }
+  .title_container {
+      position: absolute;
+      margin-left: 10px;
+      float: left;  
+      background-color: none;
+    }  
       /*----- Tabs -----*/
 .tabs {
     width:100%;
@@ -109,7 +117,7 @@
   <body>
     <div id="interactive_map"></div>
     
-      <div class="container" id="title_container"> 
+      <div class="title_container"> 
         <h2 class="main_title"> <span>[RE]settlement</span>
       </div>
       
