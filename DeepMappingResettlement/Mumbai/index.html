@@ -20,10 +20,10 @@
             
  // Tell CartoDB it's okay if there are embedded videos and other
  // files in our infowindow template
-            subLayer.infowindow.set('sanitizeTemplate', 'false');
+            dataLayer.infowindow.set('sanitizeTemplate', 'false');
           
  // Tell CartoDB to use our template from above
-            subLayer.infowindow.set('template', $('#infowindow_template').html());
+            dataLayer.infowindow.set('template', $('#infowindow_template').html());
           });
       });
     </script>
