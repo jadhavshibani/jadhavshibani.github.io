@@ -16,6 +16,9 @@
   //  * layers[0] is the base layer (eg OpenStreetMap)
   //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
             dataLayer = layers[1].getSubLayer(0);
+             dataLayer = layers[2].getSubLayer(0);
+              dataLayer = layers[3].getSubLayer(0);
+               dataLayer = layers[4].getSubLayer(0);
             dataLayer.setSQL(sql);
             
  // Tell CartoDB it's okay if there are embedded videos and other
@@ -38,7 +41,7 @@
          <div class="cartodb-popup-content-wrapper">
            <div> {{name}} {{plan}} </div>
            <div class="cartodb-popup-content">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CCqUH-9wHK4" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="100%" src="{{{video}}}" frameborder="0" allowfullscreen></iframe>
            </div>
          </div>
          <div class="cartodb-popup-tip-container"></div>
