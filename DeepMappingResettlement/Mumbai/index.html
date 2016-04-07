@@ -19,10 +19,10 @@
              //  * dataLayer = layers[2].getSubLayer(0);
               //  * dataLayer = layers[3].getSubLayer(0);
               //  *  dataLayer = layers[4].getSubLayer(0);
-              dataLayer = layers.getSubLayer(0);
-             dataLayer = layers.getSubLayer(1);
-              dataLayer = layers.getSubLayer(2);
-              dataLayer = layers.getSubLayer(3);
+              dataLayer = layers[1].getSubLayer(0);
+             dataLayer = layers[1].getSubLayer(1);
+              dataLayer = layers[1].getSubLayer(2);
+              dataLayer = layers[1].getSubLayer(3);
                
             dataLayer.setSQL(sql);
             
@@ -46,8 +46,9 @@
          <div class="cartodb-popup-content-wrapper">
            <div> {{name}} {{plan}} </div>
            <div class="cartodb-popup-content">
+           video:{{video}}
             <p>
-            <iframe width="560" height="315" src="{{{video}}}" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xQfXcvNXx5s" frameborder="0" allowfullscreen></iframe>
             </p>
          </div>
          </div>
