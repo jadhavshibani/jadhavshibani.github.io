@@ -20,20 +20,22 @@
             dataLayerthree = layers[1].getSubLayer(2);
             dataLayerfour = layers[1].getSubLayer(3);
                
-            dataLayer.setSQL(sql);
+            // dataLayer.setSQL(sql);
             
-            // load data sets from github
-            $.getJSON('https://github.com/jadhavshibani/jadhavshibani.github.io/blob/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
-            .done (function(data){
-              var dataLayer = L.geoJson(data);
-              dataLayer .addTo (vis.getNativeMap());
-            })
  // Tell CartoDB it's okay if there are embedded videos and other
  // files in our infowindow template
             dataLayer.infowindow.set('sanitizeTemplate', 'false');
           
  // Tell CartoDB to use our template from above
             dataLayer.infowindow.set('template', $('#infowindow_template').html());
+            
+            // load data sets from github
+            $.getJSON('https://github.com/jadhavshibani/jadhavshibani.github.io/blob/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
+            .done (function(data){
+              var dataLayer = L.geoJson(data);
+              dataLayer .addTo (vis.getNativeMap());
+              
+            })
           });
       });
     </script>
