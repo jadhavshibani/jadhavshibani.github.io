@@ -15,13 +15,19 @@
        .done(function (vis, layers) {
   //  * layers[0] is the base layer (eg OpenStreetMap)
   //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
-            layerone = layers[1].getSubLayer(0);
-            layertwo = layers[1].getSubLayer(1);
-            layerthree = layers[1].getSubLayer(2);
-            layerfour = layers[1].getSubLayer(3);
+            dataLayerone = layers[1].getSubLayer(0);
+            dataLayertwo = layers[1].getSubLayer(1);
+            dataLayerthree = layers[1].getSubLayer(2);
+            dataLayerfour = layers[1].getSubLayer(3);
                
             dataLayer.setSQL(sql);
             
+            // load data sets from github
+            $.getJSON('https://github.com/jadhavshibani/jadhavshibani.github.io/blob/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
+            .done (function(data){
+              var dataLayer = L.geoJson(data);
+              dataLayer .addTo (vis.getNativeMap());
+            })
  // Tell CartoDB it's okay if there are embedded videos and other
  // files in our infowindow template
             dataLayer.infowindow.set('sanitizeTemplate', 'false');
