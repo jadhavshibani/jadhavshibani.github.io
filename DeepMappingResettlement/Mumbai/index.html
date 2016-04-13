@@ -29,8 +29,8 @@
  // Tell CartoDB to use our template from above
             dataLayer.infowindow.set('template', $('#infowindow_template').html());
             
-            // load data sets from github
-            $.getJSON('https://github.com/jadhavshibani/jadhavshibani.github.io/blob/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
+            // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
+            $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
             .done (function(data){
               var dataLayerPreReSettlement = L.geoJson(data);
               dataLayerPreReSettlement .addTo (vis.getNativeMap());
