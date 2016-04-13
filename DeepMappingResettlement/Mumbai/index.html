@@ -15,10 +15,18 @@
        .done(function (vis, layers) {
   //  * layers[0] is the base layer (eg OpenStreetMap)
   //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
-            // dataLayerone = layers[1].getSubLayer(0);
-            // dataLayertwo = layers[1].getSubLayer(1);
-            // dataLayerthree = layers[1].getSubLayer(2);
-            dataLayer = layers[1].getSubLayer(2);
+            layerone = layers[1].getSubLayer(0);
+            layertwo = layers[1].getSubLayer(1);
+            layerthree = layers[1].getSubLayer(2);
+            //layerfour = layers[1].getSubLayer(3);
+            
+             // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
+            $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
+            .done (function(data){
+              var dataLayerPreReSettlement = L.geoJson(data);
+              dataLayerPreReSettlement .addTo (vis.getNativeMap());
+              
+            })
                
             // dataLayer.setSQL(sql);
             
@@ -28,14 +36,7 @@
           
  // Tell CartoDB to use our template from above
             dataLayer.infowindow.set('template', $('#infowindow_template').html());
-            
-            // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
-            $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
-            .done (function(data){
-              var dataLayerPreReSettlement = L.geoJson(data);
-              dataLayerPreReSettlement .addTo (vis.getNativeMap());
-              
-            })
+          
           });
       });
     </script>
