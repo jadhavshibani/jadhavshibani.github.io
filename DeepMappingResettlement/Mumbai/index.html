@@ -58,7 +58,7 @@
 }).addTo(map);
 
  // Ask CartoDB for the top 25 most expensive features, as GeoJSON
-  $.getJSON('https://jadhs825.cartodb.com/api/v2/viz/6b4cc190-ff5a-11e5-9e92-0e5db1731f59/viz.json')
+  $.getJSON('https://eric.cartodb.com/api/v2/sql?q=SELECT * FROM airbnb2 ORDER BY price DESC LIMIT 25&format=GeoJSON')
   
     // When it's done, add the results to the map
     .done(function (data) {
@@ -72,21 +72,21 @@
     Make sure you enable the fields in your map's infowindows.
     Refer: http://docs.cartodb.com/tutorials/custom_interactivity/
            http://bl.ocks.org/michellechandra/96d9a6ab39dcb0f4172a-->
-    <script type="infowindow/html" id="infowindow_template">
-      <div class="cartodb-popup v2">
-        <a href="#close" class="cartodb-popup-close-button close">x</a>
-         <div class="cartodb-popup-content-wrapper">
-           <div> {{name}} {{plan}} </div>
-           <div class="cartodb-popup-content">
+    <!--<script type="infowindow/html" id="infowindow_template">-->
+    <!--  <div class="cartodb-popup v2">-->
+    <!--    <a href="#close" class="cartodb-popup-close-button close">x</a>-->
+    <!--     <div class="cartodb-popup-content-wrapper">-->
+    <!--       <div> {{name}} {{plan}} </div>-->
+    <!--       <div class="cartodb-popup-content">-->
            
-            <p>
-            <iframe width="100%" height="100%" src="{{video}}" frameborder="0" allowfullscreen></iframe>
-            </p>
-         </div>
-         </div>
-         <div class="cartodb-popup-tip-container"></div>
-      </div>
-    </script>
+    <!--        <p>-->
+    <!--        <iframe width="100%" height="100%" src="{{video}}" frameborder="0" allowfullscreen></iframe>-->
+    <!--        </p>-->
+    <!--     </div>-->
+    <!--     </div>-->
+    <!--     <div class="cartodb-popup-tip-container"></div>-->
+    <!--  </div>-->
+    <!--</script>-->
     
     <!---Tabs:  refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"-->
     <script>
