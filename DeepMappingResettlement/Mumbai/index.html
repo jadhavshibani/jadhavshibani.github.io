@@ -2,27 +2,22 @@
 <html>
   <head>
     <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
-    <!--Load Leaflet. Pretty standard.-->
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-      <!--Load moment.js. This makes formatting dates easier:http://momentjs.com/-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-    <!--  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />-->
-    <!--<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"> </script>-->
+      <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"> </script>
     
 <!---Initialize map from CartoDB: create the map and store the data layer for later-->
-  <script>
-  //       var dataLayer;
-  //       $(document).ready(function () {
-  //       cartodb.createVis('interactive_map', 'https://jadhs825.cartodb.com/api/v2/viz/6b4cc190-ff5a-11e5-9e92-0e5db1731f59/viz.json', {
-  //           cartodb_logo: false , fullscreen: true , mobile_layout: true })
-  // //Initialize layers
-  //     .done(function (vis, layers) {
-  // //  * layers[0] is the base layer (eg OpenStreetMap)
-  // //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
-  //           layerone = layers[1].getSubLayer(0);
-  //           layertwo = layers[1].getSubLayer(1);
-  //           layerthree = layers[1].getSubLayer(2);
+    <script>
+         var dataLayer;
+         $(document).ready(function () {
+         cartodb.createVis('interactive_map', 'https://jadhs825.cartodb.com/api/v2/viz/6b4cc190-ff5a-11e5-9e92-0e5db1731f59/viz.json', {
+            cartodb_logo: false , fullscreen: true , mobile_layout: true })
+  //Initialize layers
+       .done(function (vis, layers) {
+  //  * layers[0] is the base layer (eg OpenStreetMap)
+  //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+            layerone = layers[1].getSubLayer(0);
+            layertwo = layers[1].getSubLayer(1);
+            layerthree = layers[1].getSubLayer(2);
             //layerfour = layers[1].getSubLayer(3);
             
              // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
@@ -36,57 +31,34 @@
             
  // Tell CartoDB it's okay if there are embedded videos and other
  // files in our infowindow template
-//             dataLayer.infowindow.set('sanitizeTemplate', 'false');
+            dataLayer.infowindow.set('sanitizeTemplate', 'false');
           
-// // Tell CartoDB to use our template from above
-//             dataLayer.infowindow.set('template', $('#infowindow_template').html());
+ // Tell CartoDB to use our template from above
+            dataLayer.infowindow.set('template', $('#infowindow_template').html());
           
-//           });
-//       });
-    <script>
-    var map;
-    // Leaflet using cartodb data
-    $(document).ready(function () {
-  // Create a map centered on NYC
-  var map = L.map('map').setView([19.10, 72.89], 10);
-  
-  // Add a base layer. We're using Stamen's Toner:
-  //  http://maps.stamen.com/#toner
-  L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
-    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
-    maxZoom: 18
-}).addTo(map);
-
- // Ask CartoDB for the top 25 most expensive features, as GeoJSON
-  $.getJSON('https://eric.cartodb.com/api/v2/sql?q=SELECT * FROM airbnb2 ORDER BY price DESC LIMIT 25&format=GeoJSON')
-  
-    // When it's done, add the results to the map
-    .done(function (data) {
-      L.geoJson(data).addTo(map);   
-    });
-});
+          });
+      });
     </script>
-    
     
 <!--- Infowindow : Use {{ my_field }} to get data out of your tables. 
     Make sure you enable the fields in your map's infowindows.
     Refer: http://docs.cartodb.com/tutorials/custom_interactivity/
            http://bl.ocks.org/michellechandra/96d9a6ab39dcb0f4172a-->
-    <!--<script type="infowindow/html" id="infowindow_template">-->
-    <!--  <div class="cartodb-popup v2">-->
-    <!--    <a href="#close" class="cartodb-popup-close-button close">x</a>-->
-    <!--     <div class="cartodb-popup-content-wrapper">-->
-    <!--       <div> {{name}} {{plan}} </div>-->
-    <!--       <div class="cartodb-popup-content">-->
+    <script type="infowindow/html" id="infowindow_template">
+      <div class="cartodb-popup v2">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+         <div class="cartodb-popup-content-wrapper">
+           <div> {{name}} {{plan}} </div>
+           <div class="cartodb-popup-content">
            
-    <!--        <p>-->
-    <!--        <iframe width="100%" height="100%" src="{{video}}" frameborder="0" allowfullscreen></iframe>-->
-    <!--        </p>-->
-    <!--     </div>-->
-    <!--     </div>-->
-    <!--     <div class="cartodb-popup-tip-container"></div>-->
-    <!--  </div>-->
-    <!--</script>-->
+            <p>
+            <iframe width="100%" height="100%" src="{{video}}" frameborder="0" allowfullscreen></iframe>
+            </p>
+         </div>
+         </div>
+         <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
     
     <!---Tabs:  refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"-->
     <script>
@@ -105,7 +77,7 @@
 <!--- Style me using CSS -->
     <style>
        /*----- Web Page -----*/
-    html, body #map{
+    html, body {
         height: 100%;
         margin: 0;
         padding: 0;
@@ -125,28 +97,28 @@
     }
     
       /*----- Cartodb Map -----*/
-    /*#interactive_map {*/
-    /*    height: 90%;*/
-    /*    width: 100%;*/
-    /*    padding-bottom: 7px;*/
-    /*    clear: both;*/
-    /*    position:relative;*/
-    /*    z-index:2;*/
-    /*  }*/
+    #interactive_map {
+        height: 90%;
+        width: 100%;
+        padding-bottom: 7px;
+        clear: both;
+        position:relative;
+        z-index:2;
+      }
       
        /*----- Infowindow -----*/
-      /* div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {*/
-      /*  background: black;*/
-      /*  color: white;*/
-      /*}*/
+       div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
+        background: black;
+        color: white;
+      }
       
-      /*div.cartodb-popup.v2:before {*/
-      /*  border-top-color: black;*/
-      /*}*/
+      div.cartodb-popup.v2:before {
+        border-top-color: black;
+      }
       
-      /*div.cartodb-popup p {*/
-      /*  color: white;*/
-      /*}*/
+      div.cartodb-popup p {
+        color: white;
+      }
       
       /*----- Tabs -----*/
 .tabs {
@@ -202,7 +174,7 @@
   </head>
   
   <body>
-    <div id="map">
+    <div id="interactive_map">
       <h2> [RE]settlement</h2>
     </div>
     
@@ -252,3 +224,5 @@
 
   </body>
 </html>
+
+
