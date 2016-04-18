@@ -3,10 +3,10 @@
   <head>
     <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
     <!--Load Leaflet. Pretty standard.-->
-    <!--Load moment.js. This makes formatting dates easier:http://momentjs.com/-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+      <!--Load moment.js. This makes formatting dates easier:http://momentjs.com/-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
     <!--  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />-->
     <!--<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"> </script>-->
     
@@ -44,7 +44,7 @@
 //           });
 //       });
     <script>
-    
+    var map;
     // Leaflet using cartodb data
     $(document).ready(function () {
   // Create a map centered on NYC
@@ -58,7 +58,7 @@
 }).addTo(map);
 
  // Ask CartoDB for the top 25 most expensive features, as GeoJSON
-  $.getJSON('https://eric.cartodb.com/api/v2/sql?q=SELECT * FROM airbnb2 ORDER BY price DESC LIMIT 25&format=GeoJSON')
+  $.getJSON('https://jadhs825.cartodb.com/api/v2/viz/6b4cc190-ff5a-11e5-9e92-0e5db1731f59/viz.json')
   
     // When it's done, add the results to the map
     .done(function (data) {
@@ -105,7 +105,7 @@
 <!--- Style me using CSS -->
     <style>
        /*----- Web Page -----*/
-    html, body {
+    html, body #map{
         height: 100%;
         margin: 0;
         padding: 0;
@@ -125,28 +125,28 @@
     }
     
       /*----- Cartodb Map -----*/
-    #interactive_map {
-        height: 90%;
-        width: 100%;
-        padding-bottom: 7px;
-        clear: both;
-        position:relative;
-        z-index:2;
-      }
+    /*#interactive_map {*/
+    /*    height: 90%;*/
+    /*    width: 100%;*/
+    /*    padding-bottom: 7px;*/
+    /*    clear: both;*/
+    /*    position:relative;*/
+    /*    z-index:2;*/
+    /*  }*/
       
        /*----- Infowindow -----*/
-       div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
-        background: black;
-        color: white;
-      }
+      /* div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {*/
+      /*  background: black;*/
+      /*  color: white;*/
+      /*}*/
       
-      div.cartodb-popup.v2:before {
-        border-top-color: black;
-      }
+      /*div.cartodb-popup.v2:before {*/
+      /*  border-top-color: black;*/
+      /*}*/
       
-      div.cartodb-popup p {
-        color: white;
-      }
+      /*div.cartodb-popup p {*/
+      /*  color: white;*/
+      /*}*/
       
       /*----- Tabs -----*/
 .tabs {
@@ -202,7 +202,7 @@
   </head>
   
   <body>
-    <div id="interactive_map">
+    <div id="map">
       <h2> [RE]settlement</h2>
     </div>
     
