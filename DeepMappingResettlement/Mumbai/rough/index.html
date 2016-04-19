@@ -17,16 +17,30 @@
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
         }).addTo(map);
               
-               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson', function (data) {
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson')
+                 .done (function (data) {
           L.geoJson(data, {
             
-//     Add a popup to each "layer" (shape in the GeoJSON), in this case the popup simply contains the NAME property.
-              
-         onEachFeature: function (feature, layer) {
-         layer.bindPopup(feature.properties.name_of_place_of_origin);
-          }
-          }).addTo(map);
-        })
+            
+            
+// Create circles instead of standard markers
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+ // You can find all of the styling properties for Leaflet here:
+        //   http://leafletjs.com/reference.html#path-options
+            
+        style:function (feature) {
+          var style = {
+            fillColor: 'red',
+            fillOpacity: 0.5,
+            radius:  7,
+            stroke: false
+          };    
+           return style; 
+          }         
+          }).addTo(map);v
+        });
       });
     </script>
              
@@ -60,6 +74,7 @@
              position: relative;
              z-index:2;
        }
+      
   
       #main_title {
       margin-left: 10px;
