@@ -23,7 +23,7 @@
 //     Add a popup to each "layer" (shape in the GeoJSON), in this case the popup simply contains the NAME property.
               
          onEachFeature: function (feature, layer) {
-         layer.bindPopup(feature.properties.NAME);
+         layer.bindPopup(feature.properties.name_of_place_of_origin);
           }
           }).addTo(map);
         })
