@@ -1,16 +1,11 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-
-    <!-- Load jQuery -->
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-    <!-- Load Leaflet -->
+    <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
+    
+       <!-- Load Leaflet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-
     <script>
       var map;
       $(document).ready(function () {
@@ -21,10 +16,8 @@
     {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
         }).addTo(map);
-        
-//        Add data loaded.
-        
-        $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson', function (data) {
+              
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson', function (data) {
           L.geoJson(data, {
             
 //     Add a popup to each "layer" (shape in the GeoJSON), in this case the popup simply contains the NAME property.
@@ -36,8 +29,9 @@
         })
       });
     </script>
+             
     
-     <!---Tabs:  refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"-->
+    <!---Tabs:  refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"-->
     <script>
       $(document).ready(function() {
     $('.tabs .tab-links a').on('click', function(e)  {
@@ -51,30 +45,41 @@
 });
     </script>
     
-      
+<!--- Style me using CSS -->
     <style>
-    #map{ width: 100%; height: 90%; min-height: 90%; position: absolute}
+       /*----- Web Page -----*/
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
       
-        #main_title {
+       #map{ width: 100%; 
+             height: 90%; min-height: 90%; 
+             position: relative;
+             z-index:2;
+       }
+  
+      #main_title {
       margin-left: 10px;
       float: left;  
       background-color: none;
-      z-index:3;
     }  
     
     h2 {
       position: absolute;
       padding-left:50px;
-      z-index:2;
-    } 
-    
-         /*----- Tabs -----*/
+      z-index:1;
+    }
+        
+      /*----- Tabs -----*/
 .tabs {
     width:100%;
     display:inline-block;
     text-decoration:none;
-    z-index:1;
 }
+
     /*----- Tab Links -----*/
     .tab-links:after {
         display:block;
@@ -119,16 +124,18 @@
             display:block;
         }
     </style>
-    
-  </style> 
   </head>
-    
+  
   <body>
     <div id="map">
-      <h2>[RE]settlement</h2>
+      <h2> [RE]settlement</h2>
     </div>
-     
-     <div class="tabs">
+    
+      <!--<div class="main_title"> -->
+      <!--  <h2> [RE]settlement</h2>-->
+      <!--</div>-->
+      
+      <div class="tabs">
     <ul class="tab-links">
         <!--<li class="active"><a href="#tab1">About</a></li>-->
         <li><a href="#tab1">About</a></li>
@@ -167,6 +174,8 @@
         </div>
     </div>
 </div>
-       
+
   </body>
 </html>
+
+
