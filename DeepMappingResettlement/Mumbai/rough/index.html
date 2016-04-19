@@ -16,13 +16,20 @@
     {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
         }).addTo(map);
-              
-               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson')
-                 .done (function (data) {
-          L.geoJson(data, {
+        
+     
+         
+         <!--   Add data loaded from GitHub.....pre to post resettlement locations  -->       
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_to_post_resettlement_path.geojson', function (data) {L.geoJson(data, {  
             
+          }).addTo(map);
+        })    
+        
+        
+    <!--   Add data loaded from GitHub.....pre resettlement locations  -->       
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson').done (function (data) {L.geoJson(data, {  
             
-            
+      
 // Create circles instead of standard markers
         pointToLayer: function (feature, latlng) {
           return L.circleMarker(latlng);
@@ -32,15 +39,89 @@
             
         style:function (feature) {
           var style = {
-            fillColor: 'red',
-            fillOpacity: 0.5,
-            radius:  7,
+            fillColor: 'grey',
+            fillOpacity: 0.8,
+            radius:  5,
             stroke: false
           };    
            return style; 
           }         
           }).addTo(map);v
         });
+        
+    <!--   Add data loaded from GitHub.....manmade vulnerable locations  -->       
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_man_made_vulnerable_location.geojson').done (function (data) {L.geoJson(data, {  
+            
+      
+// Create circles instead of standard markers
+        polygonToLayer: function (feature, latlng) {
+          return L.polygonMarker(latlng);
+        },
+ // You can find all of the styling properties for Leaflet here:
+        //   http://leafletjs.com/reference.html#path-options
+            
+        style:function (feature) {
+          var style = {
+            fillColor: 'green',
+            fillOpacity: 0.5,
+            stroke: false
+          };    
+           return style; 
+          }         
+          }).addTo(map);v
+        });    
+        
+        
+        
+       <!--   Add data loaded from GitHub.....natural resources  -->       
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_natural_resources.geojson').done (function (data) {L.geoJson(data, {  
+            
+      
+// Create circles instead of standard markers
+        polygonToLayer: function (feature, latlng) {
+          return L.polygonMarker(latlng);
+        },
+ // You can find all of the styling properties for Leaflet here:
+        //   http://leafletjs.com/reference.html#path-options
+            
+        style:function (feature) {
+          var style = {
+            fillColor: 'blue',
+            fillOpacity: 0.1,
+            stroke: false
+          };    
+           return style; 
+          }         
+          }).addTo(map);v
+        });    
+        
+        
+        
+        <!--   Add data loaded from GitHub.....resettlement locations  -->       
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_post_resettlement_locations.geojson').done (function (data) {L.geoJson(data, {  
+            
+      
+// Create circles instead of standard markers
+        polugonToLayer: function (feature, latlng) {
+          return L.polygonMarker(latlng);
+        },
+ // You can find all of the styling properties for Leaflet here:
+        //   http://leafletjs.com/reference.html#path-options
+            
+        style:function (feature) {
+          var style = {
+            fillColor: 'maroon',
+            fillOpacity: 1,
+            stroke: false
+          };    
+           return style; 
+          }         
+          }).addTo(map);v
+        });    
+          
+         
+      <!-- end of adding layers and editing it --> 
+        
       });
     </script>
              
