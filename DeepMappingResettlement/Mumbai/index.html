@@ -21,7 +21,7 @@
             //layerfour = layers[1].getSubLayer(3);
             
               // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
-            $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
+            $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson')
             .done (function(data){
               var dataLayerPreReSettlement = L.geoJson(data);
               dataLayerPreReSettlement .addTo (vis.getNativeMap());
