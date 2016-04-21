@@ -20,29 +20,12 @@
             layerthree = layers[1].getSubLayer(2);
             //layerfour = layers[1].getSubLayer(3);
             
-              // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
-              // Add data loaded from GitHub.....pre resettlement locations       
-               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_resettlement_locations_mumbai.geojson').done (function (data) {L.geoJson(data, {  
-            
-      
-// Create circles instead of standard markers
-        pointToLayer: function (feature, latlng) {
-          return L.circleMarker(latlng);
-        },
- // You can find all of the styling properties for Leaflet here:
-        //   http://leafletjs.com/reference.html#path-options
-            
-        style:function (feature) {
-          var style = {
-            fillColor: 'grey',
-            fillOpacity: 0.8,
-            radius:  5,
-            stroke: false
-          };    
-           return style; 
-          }         
-          }).addTo(map);v
-        });
+             // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
+            $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
+            .done (function(data){
+              var dataLayerPreReSettlement = L.geoJson(data);
+              dataLayerPreReSettlement .addTo (vis.getNativeMap());
+            })
                
             // dataLayer.setSQL(sql);
             
