@@ -27,21 +27,7 @@
       
                $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_to_post_resettlement_path.geojson')
                .done (function (data) {L.geoJson(data, {  
-                 
-// Create circles instead of standard markers
-        lineToLayer: function (feature, latlng) {
-          return L.lineMarker(latlng);
-        },
         
- // You can find all of the styling properties for Leaflet here: http://leafletjs.com/reference.html#path-options
-          style:function (feature) {
-          var style = {
-            fillColor: 'maroon',
-            fillOpacity: 1,
-            stroke: false
-          };    
-           return style; 
-          }         
           }).addTo(map);
         });   
                 
