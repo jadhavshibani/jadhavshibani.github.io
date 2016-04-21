@@ -45,8 +45,15 @@
             stroke: false
           };    
            return style; 
-          }         
-          }).addTo(map);v
+          }
+          
+           onEachFeature: function (feature, layer) {
+         layer.bindPopup(feature.properties.name_of_place_of_origin);
+           
+          }
+          
+          
+          }).addTo(map);
         });
         
     <!--   Add data loaded from GitHub.....manmade vulnerable locations  -->       
