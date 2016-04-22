@@ -5,6 +5,7 @@
        <!-- Load Leaflet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
     
    <!------------------------------------------------------------------------------------->
     <!--Add base map-->
@@ -18,11 +19,22 @@
       var layer4;
       var layer5;
       
+      //  $( "input" ).click(function( event ) {
+      //  layerClicked = window[event.target.value];
+
+       //     if (map.hasLayer(layerClicked)) {
+        //        map.removeLayer(layerClicked);
+       //     }
+       //     else{
+       //         map.addLayer(layerClicked);
+       //     };
+      
+      
      // layer1 is pre to post resettlement
      // layer2 is pre resettlement
      // layer3 is Manmade vulnerable locations 
-     // layer4 is natural resources 
-     // layer5 is Resettlement locations
+     // layer4 is Resettlement locations 
+     // layer5 is natural resources
       
       $(document).ready(function () {
 //Create the map
@@ -31,7 +43,11 @@
          L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png',
     {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+           
+          
         }).addTo(map);
+        
+           
         
 // ---------------------------------------------------------------------------------
       // Add data loaded from GitHub.....layer1 = pre to post resettlement locations
@@ -130,35 +146,21 @@
           }
           
            return style; 
-          }         
-          }).addTo(map);
-        });    
-        
-        
- // ---------------------------------------------------------------------------------        
-      // Add data loaded from GitHub.....layer4 = natural resources   
-// --------------------------------------------------------------------------------- 
-        $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_natural_resources.geojson').done (function (data) {layer4 = L.geoJson(data, {  
-            
-       
- // You can find all of the styling properties for Leaflet here:http://leafletjs.com/reference.html#path-options
-            
-        style:function (feature) {
-          var style = {
-            fillColor: 'green',
-            fillOpacity: 0.1,
-            stroke: false
-          };  
+          },  
           
-           return style; 
-          }         
+          // Add a popup to each "layer" (shape in the GeoJSON)
+            
+      onEachFeature: function (feature, layer) {
+      layer.bindPopup(feature.properties.name + feature.properties.video );
+        
+       } 
           }).addTo(map);
         });    
         
 // --------------------------------------------------------------------------------- 
-        // Add data loaded from GitHub.....layer5 = Resettlement locations
+        // Add data loaded from GitHub.....layer4 = Resettlement locations
 // --------------------------------------------------------------------------------- 
-       $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_post_resettlement_locations.geojson').done (function (data) {layer5 = L.geoJson(data, {  
+       $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_post_resettlement_locations.geojson').done (function (data) {layer4 = L.geoJson(data, {  
              
  // You can find all of the styling properties for Leaflet here:http://leafletjs.com/reference.html#path-options
             
@@ -175,17 +177,50 @@
          
           else if (feature.properties.status == "Prospective") {
             
-            style.color = 'navyblue';
+            style.color = 'grey';
           }
            return style; 
-          }         
+          } ,
+         // Add a popup to each "layer" (shape in the GeoJSON)
+            
+      onEachFeature: function (feature, layer) {
+      layer.bindPopup(feature.properties.name);
+        
+       } 
           }).addTo(map);
         });    
           
+        // ---------------------------------------------------------------------------------        
+      // Add data loaded from GitHub.....layer5 = natural resources   
+// --------------------------------------------------------------------------------- 
+        $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_natural_resources.geojson').done (function (data) {layer5 = L.geoJson(data, {  
+            
+       
+ // You can find all of the styling properties for Leaflet here:http://leafletjs.com/reference.html#path-options
+            
+        style:function (feature) {
+          var style = {
+            fillColor: 'green',
+            fillOpacity: 0.1,
+            stroke: false
+          };  
+          
+           return style; 
+          }         
+          }).addTo(map);
+          
+          
+        });    
+        
 // --------------------------------------------------------------------------------- 
       // end of adding layers and editing it 
 // ---------------------------------------------------------------------------------  
+        
+        
       });
+      
+      
+      
     </script>
              
 <!-----------------------------------------------------------------------------------   -->
@@ -231,6 +266,25 @@
       position: absolute;
       padding-left:50px;
       z-index:1;
+    }
+      
+   /*    check boxes / legend */
+       .overlay{
+        position:fixed;
+        top:25%;
+        left: 100px;
+        background-color: #073856;
+        padding: 20px;
+        border-radius: 5px;
+        z-index:2; 
+    }
+
+    .overlay label{
+        color: white;
+        margin:5px 0px;
+        display: inline-block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
     }
         
       /*----- Tabs -----*/
@@ -291,10 +345,27 @@
       <h2> [RE]settlement</h2>
     </div>
     
-      <!--<div class="main_title"> -->
-      <!--  <h2> [RE]settlement</h2>-->
-      <!--</div>-->
-      
+    
+   <!--  check boxes / legend -->
+   <div class ="overlay">
+   <label>
+         <input type="checkbox"  value="layer1" checked> Flow
+        </label><br>
+   <label>
+         <input type="checkbox"  value="layer2" checked> Pre [Re]settlement
+        </label><br> 
+   <label>
+         <input type="checkbox"  value="layer3" checked> Vulnerable Locations
+        </label><br> 
+   <label>
+         <input type="checkbox"  value="layer4" checked> [Re]settlement Locations
+        </label><br> 
+   <label>
+         <input type="checkbox"  value="layer5" checked> Protected Areas
+        </label> 
+    </div>
+     
+  <!--  Tabs -->   
       <div class="tabs">
     <ul class="tab-links">
         <!--<li class="active"><a href="#tab1">About</a></li>-->
