@@ -5,6 +5,9 @@
        <!-- Load Leaflet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="../css/styledLayerControl.css" />
+    <script src="../src/styledLayerControl.js"></script>
+    <meta charset="utf-8"
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
     
    <!------------------------------------------------------------------------------------->
@@ -19,22 +22,15 @@
       var layer4;
       var layer5;
       
-      //  $( "input" ).click(function( event ) {
-      //  layerClicked = window[event.target.value];
-
-       //     if (map.hasLayer(layerClicked)) {
-        //        map.removeLayer(layerClicked);
-       //     }
-       //     else{
-       //         map.addLayer(layerClicked);
-       //     };
-      
-      
+    // Variables that will store our layers.   
      // layer1 is pre to post resettlement
      // layer2 is pre resettlement
      // layer3 is Manmade vulnerable locations 
      // layer4 is Resettlement locations 
      // layer5 is natural resources
+      
+      
+      
       
       $(document).ready(function () {
 //Create the map
@@ -53,7 +49,11 @@
       // Add data loaded from GitHub.....layer1 = pre to post resettlement locations
 // ---------------------------------------------------------------------------------
       
-               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_to_post_resettlement_path.geojson').done (function (data) {layer1 = L.geoJson(data, {  
+               $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_pre_to_post_resettlement_path.geojson').done (function (data) {
+
+// It's crucial that we save the layer to a variable. Here set a value
+                 
+        layer1 = L.geoJson(data, {  
         style:function (feature) {
         var style = {
             color: 'grey',
@@ -186,6 +186,7 @@
       onEachFeature: function (feature, layer) {
       layer.bindPopup(feature.properties.name);
         
+        
        } 
           }).addTo(map);
         });    
@@ -215,7 +216,55 @@
 // --------------------------------------------------------------------------------- 
       // end of adding layers and editing it 
 // ---------------------------------------------------------------------------------  
+      // Add change handlers to the checkboxes
+      //
+      // If the checkbox is checked, "add" (show) the layer, if it is not,
+      // "remove" (hide) the layer.
+      //
+      $('.layer1').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(layer1);     
+        }
+        else {
+          map.removeLayer(layer1);     
+        }
+      });
+
+      $('.layer2').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(layer2);     
+        }
+        else {
+          map.removeLayer(layer2);     
+        }
+      });  
         
+        $('.layer3').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(layer3);     
+        }
+        else {
+          map.removeLayer(layer3);     
+        }
+      });
+        
+        $('.layer4').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(layer4);     
+        }
+        else {
+          map.removeLayer(layer4);     
+        }
+      });
+        
+        $('.layer5').change(function () {
+        if ($(this).is(':checked')) {
+          map.addLayer(layer5);     
+        }
+        else {
+          map.removeLayer(layer5);     
+        }
+      });
         
       });
       
@@ -238,6 +287,11 @@
     });
 });
     </script>
+    
+    
+    
+    
+    
     
 <!--- Style me using CSS -->
     <style>
@@ -264,29 +318,27 @@
     
     h2 {
       position: absolute;
-      padding-left:50px;
+      padding:5px;
+      margin:40px;
       z-index:1;
+      background-color: white;
     }
       
-   /*    check boxes / legend */
-       .overlay{
-        position:fixed;
-        top:25%;
-        left: 100px;
-        background-color: #073856;
-        padding: 20px;
-        border-radius: 5px;
+      
+   /*check boxes / legend */
+      
+       .checkboxes{
+        position:absolute;
+        top:1%;
+        right: 10px;
+        background-color: white;
+        opacity: 0.85;
+        padding: 3px;
         z-index:2; 
     }
 
-    .overlay label{
-        color: white;
-        margin:5px 0px;
-        display: inline-block;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 14px;
-    }
-        
+     
+      
       /*----- Tabs -----*/
 .tabs {
     width:100%;
@@ -347,23 +399,41 @@
     
     
    <!--  check boxes / legend -->
-   <div class ="overlay">
-   <label>
-         <input type="checkbox"  value="layer1" checked> Flow
-        </label><br>
-   <label>
-         <input type="checkbox"  value="layer2" checked> Pre [Re]settlement
-        </label><br> 
-   <label>
-         <input type="checkbox"  value="layer3" checked> Vulnerable Locations
-        </label><br> 
-   <label>
-         <input type="checkbox"  value="layer4" checked> [Re]settlement Locations
-        </label><br> 
-   <label>
-         <input type="checkbox"  value="layer5" checked> Protected Areas
-        </label> 
+   <div class="checkboxes">
+     <div>
+       Pre [re]settlement
+     </div>
+     <div>
+       <input type="checkbox" class="layer2" id="layer2" checked />
+      <label for="layer2">Location of origin</label>
     </div>
+    <div>
+      <input type="checkbox" class="layer1" id="layer1" checked />
+      <label for="layer1">Flow</label>
+    </div>
+     </br>
+     <div>
+       [Re]settlement Locations
+       </div>
+    <div>
+      <input type="checkbox" class="layer4" id="layer4" checked />
+      <label for="layer4">[Re]settlement Locations</label>
+    </div>
+    </br>
+    <div>
+      Existing Conditions
+    </div>
+    <div>
+      <input type="checkbox" class="layer3" id="layer3" checked />
+      <label for="layer3">Industrial Landscapes</label>
+   </div>
+   <div>
+      <input type="checkbox" class="layer5" id="layer5" checked />
+      <label for="layer5">Delta Land</label>
+    </div>
+     
+   </div>
+     
      
   <!--  Tabs -->   
       <div class="tabs">
