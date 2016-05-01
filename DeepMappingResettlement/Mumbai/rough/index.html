@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
-       <!-- Load Leaflet -->
+    <meta charset="utf-8">
+    
+    <!-- Load jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"> </script>
+    
+    <!-- Load Leaflet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    
     <link rel="stylesheet" href="../css/styledLayerControl.css" />
     <script src="../src/styledLayerControl.js"></script>
-    <meta charset="utf-8"
+    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
     
    <!------------------------------------------------------------------------------------->
-    <!--Add base map-->
-    <!--------------------------------------------------------------------------------->
+   <!--Add base map-->
+   <!--------------------------------------------------------------------------------->
     
     <script>
       var map;
@@ -35,6 +40,12 @@
       $(document).ready(function () {
 //Create the map
       map = L.map('map').setView([19.10, 72.89], 11);
+        
+// Hide sidebar when map is clicked
+        map.on('click', function () {
+          $('.sidebar').hide();
+        });
+        
 //Add base tiles 
          L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png',
     {
@@ -54,6 +65,17 @@
 // It's crucial that we save the layer to a variable. Here set a value
                  
         layer1 = L.geoJson(data, {  
+          
+          // Add a popup to each "layer" (shape in the GeoJSON)
+            
+      onEachFeature: function (feature, layer) {
+      layer.on('click', function () {
+                $('.sidebar').html( 'Place of Origin: ' +feature.properties.origin + '</p><p>[Re]settlement Site: ' + feature.properties.relocation).show();
+      });
+        
+       } ,  
+          
+          
         style:function (feature) {
         var style = {
             color: 'grey',
@@ -95,7 +117,9 @@
     // Add a popup to each "layer" (shape in the GeoJSON)
             
       onEachFeature: function (feature, layer) {
-      layer.bindPopup(feature.properties.name_of_place_of_origin);
+      layer.on('click', function () {
+                $('.sidebar').html( feature.properties.name_of_place_of_origin + '</p><p>' + feature.properties.type_of_dwellers).show();
+      });
         
        } , 
             
@@ -118,14 +142,29 @@
         // Add data loaded from GitHub.....layer3 = Manmade vulnerable locations  
 // --------------------------------------------------------------------------------- 
         $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_man_made_vulnerable_location.geojson').done (function (data) {layer3 = L.geoJson(data, {  
+        
+          
+          // Add a popup to each "layer" (shape in the GeoJSON)
             
+      onEachFeature: function (feature, layer) {
+      layer.on('click', function () {
+                $('.sidebar').html( feature.properties.name + 
+                                   '</p><p>' + feature.properties.subtype + 
+                                   '</p><p>Activity: '+feature.properties.activity + 
+                                   '</p><p>'+feature.properties.video
+                                  ).show();
+      });
+        
+       } , 
+          
      
       // You can find all of the styling properties for Leaflet here: http://leafletjs.com/reference.html#path-options
             
         style:function (feature) {
           var style = {
             fillOpacity: 0.9,
-            stroke: false
+            stroke: false,
+    
           }; 
           
            if (feature.properties.type == "Power Plant" ){
@@ -148,12 +187,7 @@
            return style; 
           },  
           
-          // Add a popup to each "layer" (shape in the GeoJSON)
-            
-      onEachFeature: function (feature, layer) {
-      layer.bindPopup(feature.properties.name + feature.properties.video );
-        
-       } 
+          
           }).addTo(map);
         });    
         
@@ -203,7 +237,8 @@
           var style = {
             fillColor: 'green',
             fillOpacity: 0.1,
-            stroke: false
+            stroke: false,
+            
           };  
           
            return style; 
@@ -324,6 +359,20 @@
       background-color: white;
     }
       
+ /* Make the sidebar appear above the map, to the right. */
+       
+      .sidebar {
+        background: white;
+        opacity: 0.85;
+        display: none;
+        position: absolute;
+        left: 15px;
+        padding: 5px;
+        top: 70%;
+        width: 250px;
+        z-index: 2;
+      }
+      
       
    /*check boxes / legend */
       
@@ -397,6 +446,7 @@
       <h2> [RE]settlement</h2>
     </div>
     
+    <div class="sidebar"></div>
     
    <!--  check boxes / legend -->
    <div class="checkboxes">
