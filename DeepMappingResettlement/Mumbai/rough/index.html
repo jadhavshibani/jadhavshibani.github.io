@@ -150,8 +150,8 @@
       layer.on('click', function () {
                 $('.sidebar').html( feature.properties.name + 
                                    '</p><p>' + feature.properties.subtype + 
-                                   '</p><p>Activity: '+feature.properties.activity + 
-                                   '</p><p>'+feature.properties.video
+                                   '</p><p>'+feature.properties.activity + 
+                                   '</p><p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>'
                                   ).show();
       });
         
@@ -163,8 +163,8 @@
         style:function (feature) {
           var style = {
             fillOpacity: 0.9,
-            stroke: false,
-    
+            stroke: false
+            
           }; 
           
            if (feature.properties.type == "Power Plant" ){
@@ -215,10 +215,17 @@
           }
            return style; 
           } ,
+         
          // Add a popup to each "layer" (shape in the GeoJSON)
             
       onEachFeature: function (feature, layer) {
-      layer.bindPopup(feature.properties.name);
+       layer.on('click', function () {
+                $('.sidebar').html( feature.properties.name + 
+                                   '</p><p>Status: ' + feature.properties.status + 
+                                   '</p><p><img width="250" height="200"src="'+feature.properties.plan + '">' +
+                                   '</p><p><a href="' + feature.properties.new_links + '">' + feature.properties.link_name + '</a>'
+                                  ).show();
+      });
         
         
        } 
@@ -242,7 +249,26 @@
           };  
           
            return style; 
-          }         
+       
+          },
+          
+            // Add a popup to each "layer" (shape in the GeoJSON)
+            
+      onEachFeature: function (feature, layer) {
+       layer.on('click', function () {
+                $('.sidebar').html( feature.properties.name + 
+                                   '</p><p>Feature: ' + feature.properties.type + 
+                                   '</p><p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>'
+                                   
+                               
+                                  ).show();
+      });
+        
+        
+       } 
+          
+          
+          
           }).addTo(map);
           
           
