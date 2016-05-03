@@ -75,19 +75,20 @@
         style:function (feature) {
         var style = {
             color: 'grey',
-            opacity: .1
+            opacity: .25,
+            weight: 12
           }; 
           
           if (feature.properties.relocation == "lallubhai" ){
-            style.color = 'red';
+            style.color = '#F16626';
             
           }
           else if (feature.properties.relocation == "Natvar Parekh Compound" ){
-            style.color = 'blue';
+            style.color = '#F6A63B';
           }
           
           else if (feature.properties.relocation == "Vashi Naka" ){
-            style.color = 'purple';
+            style.color = '#F7c94d';
           }
           
           else if (feature.properties.relocation == "Milan Nagar" ){
@@ -123,10 +124,11 @@
       // styling properties for Leaflet here:http://leafletjs.com/reference.html#path-options
         style:function (feature) {
         var stylepoint = {
-            fillColor: 'grey',
-            fillOpacity: 0.3,
-            radius:  8,
-            stroke: false
+            fillColor: false,
+            fillOpacity: 0,
+            radius:  9,
+            stroke: true,
+            color : 'grey'
           }; 
            return stylepoint; 
           } 
@@ -159,26 +161,26 @@
             
         style:function (feature) {
           var style = {
-            fillOpacity: 0.9,
+            fillOpacity: 0.8,
             stroke: false
             
           }; 
           
            if (feature.properties.type == "Power Plant" ){
-            style.color = 'red'; 
+            style.color = '#666666'; 
           }
          
           else if (feature.properties.type == "Refinery\n") {
             // \n because there is a space in the data set after the word refinery
-            style.color = 'grey';
+            style.color = '#808080';
           }
           
           else if (feature.properties.type == "Waste Disposal" ){
-            style.color = 'pink';
+            style.color = '#4D4D4D';
           }
           
           else if (feature.properties.type == "Energy") {
-            style.color = 'orange';
+            style.color = '#999999';
           }
           
            return style; 
@@ -199,16 +201,17 @@
           var style = {
             
             fillOpacity: 1,
-            stroke: false
+            stroke: true
           }; 
           
            if (feature.properties.status == "Existing" ){
-            style.color = 'maroon'; 
+            style.color = '#98d4c0'; 
           }
          
           else if (feature.properties.status == "Prospective") {
             
-            style.color = 'grey';
+            style.color = '#BDE3d7';
+             
           }
            return style; 
           } ,
@@ -239,12 +242,12 @@
             
         style:function (feature) {
           var style = {
-            fillColor: 'green',
-            fillOpacity: 0.1,
+            fillColor: '#AC9E88',
+            fillOpacity: .3,
             stroke: false,
             
           };  
-          
+        
            return style; 
        
           },
