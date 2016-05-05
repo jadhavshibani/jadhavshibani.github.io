@@ -146,7 +146,7 @@
             
       onEachFeature: function (feature, layer) {
       layer.on('click', function () {
-                $('.sidebar').html( feature.properties.name + 
+                $('.sidebar').html(  feature.properties.name  + 
                                    '</p><p>' + feature.properties.subtype + 
                                    '</p><p>'+feature.properties.activity + 
                                    '</p><p><a href="' + feature.properties.reference_1 + '">' + feature.properties.ref_1_names + '</a>' +
@@ -167,20 +167,20 @@
           }; 
           
            if (feature.properties.type == "Power Plant" ){
-            style.color = '#666666'; 
+            style.color = '#966A73'; 
           }
          
           else if (feature.properties.type == "Refinery\n") {
             // \n because there is a space in the data set after the word refinery
-            style.color = '#808080';
+            style.color = '#C78D98';
           }
           
           else if (feature.properties.type == "Waste Disposal" ){
-            style.color = '#4D4D4D';
+            style.color = '#61454A';
           }
           
           else if (feature.properties.type == "Energy") {
-            style.color = '#999999';
+            style.color = '#FFB4C3';
           }
           
            return style; 
@@ -205,12 +205,12 @@
           }; 
           
            if (feature.properties.status == "Existing" ){
-            style.color = '#98d4c0'; 
+            style.color = 'grey'; 
           }
          
           else if (feature.properties.status == "Prospective") {
             
-            style.color = '#BDE3d7';
+            style.color = '#FB8072';
              
           }
            return style; 
@@ -242,8 +242,8 @@
             
         style:function (feature) {
           var style = {
-            fillColor: '#AC9E88',
-            fillOpacity: .3,
+            fillColor: '#BDE3d7',
+            fillOpacity: .5,
             stroke: false,
             
           };  
@@ -277,6 +277,8 @@
 // --------------------------------------------------------------------------------- 
       // end of adding layers and editing it 
 // ---------------------------------------------------------------------------------  
+        
+        
       // Add change handlers to the checkboxes
       //
       // If the checkbox is checked, "add" (show) the layer, if it is not,
@@ -328,8 +330,7 @@
       });
         
       });
-      
-      
+        
       
     </script>
              
@@ -392,15 +393,52 @@
         opacity: 0.85;
         display: none;
         position: absolute;
-        left: 15px;
+        left: 10px;
         padding: 15px;
-        top: 70%;
+        top: 35%;
         width: 250px;
         z-index: 2;
       }
+ 
+    /*  legend  */
+     <style type='text/css'>
+           
+  .my-legend .legend-title {
+    }
+  .my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    float: right;
+    list-style: none;
+    z-index: 2; 
+       position:absolute;
+       top:50%;
+        right:10px;
+        padding:15px;
+        background-color: white;
+   
+    }
+  .my-legend .legend-scale ul li {
+    font-size:80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+ 
+    }
+  .my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+   
+    }
       
       
-   /*check boxes / legend */
+   /*check boxes  */
       
        .checkboxes{
         position:absolute;
@@ -412,7 +450,9 @@
         z-index:2; 
     }
 
-     
+    /*  .layer3{
+        z-index:5000;
+      }  */
       
       /*----- Tabs -----*/
 .tabs {
@@ -421,7 +461,10 @@
     text-decoration:none;
 }
 
+     
+      
     /*----- Tab Links -----*/
+   
     .tab-links:after {
         display:block;
         clear:both;
@@ -469,12 +512,33 @@
   
   <body>
     <div id="map">
-      <h2><img width="150" height="150" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/map%20title.png"/></h2>
+      <h2><img width="180" height="180" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/map%20title.png"/></h2>
     </div>
     
+    <!-- sidebar -->
     <div class="sidebar"></div>
     
-   <!--  check boxes / legend -->
+     <!-- legend -->
+    <div class='my-legend'>
+    <div class='legend-scale'>
+    <ul class='legend-labels'>
+     <p><strong>Map Legend</strong></p> 
+    <li><span style='background:#8DD3C7;'></span>Location of Origin</li>
+    <li><span style='background:grey;'></span>[Re]settlement Locations</li>
+    <p>Industrial Landscapes</p>
+    <li><span style='background:#61454A;'></span>Waste Disposal</li>
+    <li><span style='background:#966A73;'></span>Power Plant</li>
+    <li><span style='background:#C78D98;'></span>Refinery</li>
+    <li><span style='background:#FFB4C3;'></span>Energy</li>
+    <p>Ecological Conditions</p>
+    <li><span style='background:#FB8072;'></span>Salt Pans</li>
+    <li><span style='background:#BDE3d7;'></span>Delta Land</li>
+  </ul>
+</div>
+</div>
+    
+    
+   <!--  check boxes  -->
    <div class="checkboxes">
      <div>
        <strong> Pre [re]settlement </strong>
