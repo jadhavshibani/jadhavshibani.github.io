@@ -405,7 +405,12 @@
         width: 250px;
         z-index: 2;
       }
- 
+      
+      .check&legend{
+        background-color:white
+      }  
+      
+      
     /*  legend  */
      <style type='text/css'>
       
@@ -421,7 +426,7 @@
        position:absolute;
        top:35%;
         right:10px;
-        padding:15px;
+        padding:25px;
         background-color: white;
    
     }
@@ -453,12 +458,20 @@
       }   
    
     .my-legend ul.legend-labels li .dotted{
-        height: 16px;
-        width: 16px;
+        height: 15px;
+        width: 15px;
         background-color: transparent;
         border-style: dotted ;
           
       }     
+     
+     .my-legend ul.legend-labels li .square{
+        height: 17px;
+        width: 17px;
+        background-color: transparent;
+        border-style: none;
+          
+      }  
       
    /*check boxes  */
       
@@ -538,20 +551,21 @@
     <div class="sidebar"></div>
     
      <!-- legend -->
+    <div class='check&legend'>
     <div class='my-legend'>
     <div class='legend-scale'>
     <ul class='legend-labels'>
      <p><strong>Map Legend</strong></p> 
     <li><span class='circle' ></span>Location of Origin</li>
-    <li><span style='background:grey;'></span>[Re]settlement Locations</li>
+    <li><span class='square' style='background:grey;'></span>[Re]settlement Locations</li>
     <p>Industrial Landscapes</p>
-    <li><span style='background:#61454A;'></span>Waste Disposal</li>
-    <li><span style='background:#966A73;'></span>Power Plant</li>
-    <li><span style='background:#C78D98;'></span>Refinery</li>
-    <li><span style='background:#FFB4C3;'></span>Energy</li>
+    <li><span class='square' style='background:#61454A;'></span>Waste Disposal</li>
+    <li><span class='square' style='background:#966A73;'></span>Power Plant</li>
+    <li><span class='square' style='background:#C78D98;'></span>Refinery</li>
+    <li><span class='square' style='background:#FFB4C3;'></span>Energy</li>
     <p>Ecological Conditions</p>
     <li><span class='dotted'></span>Salt Pans</li>
-    <li><span style='background:#BDE3d7;'></span>Delta Land</li>
+    <li><span class='square' style='background:#BDE3d7;'></span>Delta Land</li>
   </ul>
 </div>
 </div>
@@ -591,9 +605,10 @@
       <label for="layer5">Delta Land</label>
     </div>
      
-   </div>
-     
-     
+   </div> 
+   </div> 
+
+
   <!--  Tabs -->   
       <div class="tabs">
     <ul class="tab-links">
