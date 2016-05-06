@@ -39,7 +39,7 @@
       
       $(document).ready(function () {
 //Create the map
-      map = L.map('map').setView([19.10, 72.89], 11);
+      map = L.map('map').setView([19.10, 72.89], 12);
         
 // Hide sidebar when map is clicked
         map.on('click', function () {
@@ -149,7 +149,7 @@
                 $('.sidebar').html(  feature.properties.name  + 
                                    '</p><p>' + feature.properties.subtype + 
                                    '</p><p>'+feature.properties.activity + 
-                                   '</p><p><a href="' + feature.properties.reference_1 + '">' + feature.properties.ref_1_names + '</a>' +
+                                   '</p><p><a target = "_blank" href="' + feature.properties.reference_1 + '">' + feature.properties.ref_1_names + '</a>' +
                                    '</p><p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>'
                                   ).show();
       });
@@ -209,8 +209,10 @@
           }
          
           else if (feature.properties.status == "Prospective") {
-            
-            style.color = '#FB8072';
+            style.fillOpacity = 0;
+        style.dashArray = "1,5,1,5";
+         style.color = 'grey';
+             style.weight = 2;
              
           }
            return style; 
@@ -256,12 +258,16 @@
             
       onEachFeature: function (feature, layer) {
        layer.on('click', function () {
-                $('.sidebar').html( feature.properties.name + 
+         var content = feature.properties.name + 
                                    '</p><p>Feature: ' + feature.properties.type + 
-                                   '</p><p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>'
-                                   
-                               
-                                  ).show();
+                                   '</p>';
+         if (feature.properties.video){
+           content+=
+        
+         '<p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>';
+            }
+         
+                $('.sidebar').html( content ).show();
       });
         
         
@@ -270,7 +276,7 @@
           
           
           }).addTo(map);
-          
+         layer5.bringToBack(); 
           
         });    
         
@@ -402,7 +408,8 @@
  
     /*  legend  */
      <style type='text/css'>
-           
+      
+      
   .my-legend .legend-title {
     }
   .my-legend .legend-scale ul {
@@ -412,7 +419,7 @@
     list-style: none;
     z-index: 2; 
        position:absolute;
-       top:20%;
+       top:35%;
         right:10px;
         padding:15px;
         background-color: white;
@@ -437,6 +444,21 @@
    
     }
       
+   .my-legend ul.legend-labels li .circle{
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background-color: transparent;
+          
+      }   
+   
+    .my-legend ul.legend-labels li .dotted{
+        height: 16px;
+        width: 16px;
+        background-color: transparent;
+        border-style: dotted ;
+          
+      }     
       
    /*check boxes  */
       
@@ -450,9 +472,6 @@
         z-index:2; 
     }
 
-    /*  .layer3{
-        z-index:5000;
-      }  */
       
       /*----- Tabs -----*/
 .tabs {
@@ -523,7 +542,7 @@
     <div class='legend-scale'>
     <ul class='legend-labels'>
      <p><strong>Map Legend</strong></p> 
-    <li><span style='background:#8DD3C7;'></span>Location of Origin</li>
+    <li><span class='circle' ></span>Location of Origin</li>
     <li><span style='background:grey;'></span>[Re]settlement Locations</li>
     <p>Industrial Landscapes</p>
     <li><span style='background:#61454A;'></span>Waste Disposal</li>
@@ -531,7 +550,7 @@
     <li><span style='background:#C78D98;'></span>Refinery</li>
     <li><span style='background:#FFB4C3;'></span>Energy</li>
     <p>Ecological Conditions</p>
-    <li><span style='background:#FB8072;'></span>Salt Pans</li>
+    <li><span class='dotted'></span>Salt Pans</li>
     <li><span style='background:#BDE3d7;'></span>Delta Land</li>
   </ul>
 </div>
