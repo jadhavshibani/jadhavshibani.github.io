@@ -207,35 +207,27 @@ content1+=
           var style = {
             
             fillOpacity: 1,
-            stroke: true
+            stroke: true,
+            color: 'grey'
           }; 
           
-           if (feature.properties.status == "Existing" ){
-            style.color = 'grey'; 
-          }
-         
-          else if (feature.properties.status == "Prospective") {
-            style.fillOpacity = 0;
-        style.dashArray = "1,5,1,5";
-         style.color = 'grey';
-             style.weight = 2;
-             
-          }
            return style; 
           } ,
          
          // Add a popup to each "layer" (shape in the GeoJSON)
             
       onEachFeature: function (feature, layer) {
-       layer.on('click', function () {
-                $('.sidebar').html( feature.properties.name + 
+               layer.on('click', function () {
+        var content3 = feature.properties.name + 
                                    '</p><p>Status: ' + feature.properties.status + 
-                                   '</p><p><img width="250" height="200"src="'+feature.properties.plan + '">' +
-                                   '</p><p><a href="' + feature.properties.new_links + '">' + feature.properties.link_name + '</a>'
-                                  ).show();
+                                   '</p>'
+                       if(feature.properties.plan){
+content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"></p>';
+                       }
+
+                $('.sidebar').html( content3).show();
       });
-        
-        
+         
        } 
           }).addTo(map);
         });    
@@ -255,6 +247,17 @@ content1+=
             stroke: false,
             
           };  
+          
+          if (feature.properties.type == "delta" ){
+            style.color = '#BDE3d7'; 
+          }
+         
+          else if (feature.properties.type == "Salt Pan") {
+            style.color = 'grey';
+            style.fillOpacity = 9;
+        style.dashArray = "1,5,1,5";
+             style.weight = 8;
+          }
         
            return style; 
        
@@ -273,6 +276,11 @@ content1+=
          '<p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>';
             }
          
+         if(feature.properties.new_links){
+           content2+=    '</p><p><a href="' + feature.properties.new_links + '">' + feature.properties.link_name + '</a>';
+         }
+           
+           
                 $('.sidebar').html( content ).show();
       });
         
@@ -412,10 +420,7 @@ content1+=
         z-index: 2;
       }
       
-      .check&legend{
-        background-color:white
-      }  
-      
+     
       
     /*  legend  */
      <style type='text/css'>
@@ -608,9 +613,9 @@ content1+=
    </div>
    <div>
       <input type="checkbox" class="layer5" id="layer5" checked />
-      <label for="layer5">Delta Land</label>
+      <label for="layer5">Ecological Landscapes</label>
     </div>
-     
+  
    </div> 
    </div> 
 
