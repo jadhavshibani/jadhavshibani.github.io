@@ -268,7 +268,6 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
       onEachFeature: function (feature, layer) {
        layer.on('click', function () {
          var content = feature.properties.name + 
-                                   '</p><p>Feature: ' + feature.properties.type + 
                                    '</p>';
          if (feature.properties.video){
            content+=
@@ -276,7 +275,7 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
          '<p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>';
             }
          
-         if(feature.properties.new_links){
+        else if(feature.properties.new_links){
            content2+=    '</p><p><a href="' + feature.properties.new_links + '">' + feature.properties.link_name + '</a>';
          }
            
@@ -426,7 +425,7 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
      <style type='text/css'>
       
       
-  .my-legend .legend-title {
+  .my-legend  {
     }
   .my-legend .legend-scale ul {
     margin: 0;
@@ -435,7 +434,7 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
     list-style: none;
     z-index: 2; 
        position:absolute;
-       top:35%;
+       top:30%;
         right:10px;
         padding:31px;
         background-color: white;
@@ -454,8 +453,8 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
     float: left;
     height: 16px;
     width: 30px;
-    margin-right: 5px;
-    margin-left: 0;
+    margin-right: 05px;
+    margin-left: 80;
     border: 1px solid #999;
    
     }
@@ -562,7 +561,7 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
     <div class="sidebar"></div>
     
      <!-- legend -->
-    <div class='check&legend'>
+    
     <div class='my-legend'>
     <div class='legend-scale'>
     <ul class='legend-labels'>
@@ -593,12 +592,9 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
     </div>
     <div>
       <input type="checkbox" class="layer1" id="layer1" checked />
-      <label for="layer1">Flow</label>
+      <label for="layer1">Flow of Inhabitants</label>
     </div>
-     </br>
-     <div>
-       <strong>[Re]settlement Locations</strong>
-       </div>
+     
     <div>
       <input type="checkbox" class="layer4" id="layer4" checked />
       <label for="layer4">[Re]settlement Locations</label>
@@ -625,9 +621,9 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
     <ul class="tab-links">
         <!--<li class="active"><a href="#tab1">About</a></li>-->
         <li><a href="#tab1">About</a></li>
-        <li><a href="#tab2">Supporting Information</a></li>
-        <li><a href="#tab3">Methodology</a></li>
-        <li><a href="#tab4">Next Steps</a></li>
+        <li><a href="#tab2">The Project: Deep Mapping</a></li>
+        <li><a href="#tab3">Supporting Information</a></li>
+        <li><a href="#tab4">Methodology</a></li>
         <li><a href="#tab5">Get Involved</a></li>
         
     </ul>
@@ -635,8 +631,8 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
     <div class="tab-content">
         <!--<div id="tab1" class="tab active">-->
          <div id="tab1" class="tab">
-            <p>Shaping [Re]settlement Ecologies: 
-From repressive and neglected to inclusive and responsive citizenship in Mumbai.
+           <p><strong><u>Shaping [Re]settlement Ecologies</u>: 
+              From repressive and neglected to inclusive and responsive citizenship in Mumbai.</strong>
 <p>
 Human settlements have evolved and transformed exponentially to cope with the needs, desires and aspirations of human beings. Inversely, these settlements continue  to influence the physical, social and psychological well being of human beings who dwell and interact with it.  The selective linking of favourable spaces through visible and invisible infrastructures, is simultaneously plowing the fields of human settlements to distance and disconnect local spaces and people. The process of [re]settlement, caused due to involuntary displacement of communities, has been a means to geographical and psychologically segregate previously marginalized citizens in Mumbai.  The concentration of the [re]settlement initiatives in Mumbai is a distortion, one that is built through a repetitive process of dispossession, that continually ruptures communities.  While the built form of the settlements should ideally represent its content and function, all of which are much more important than the form itself, the container of the initiatives fails to capture and reflect the needs and desires of its inhabitants.  This built form is thus a manifestation of the violent ecologies that is magnified through the process of [re]settlement, which in turn prolongs the initiation to co-produce an environment in solidarity.  Hence,<strong> how can the process of resettlement be shaped in order to alleviate socio-economic, spatial and environmental segregation of marginalised communities?</strong>
 </p><p>
@@ -655,7 +651,14 @@ The ways in which we, as humans perceive our own existence and relations is shap
         </div>
  
         <div id="tab2" class="tab">
-            <p>stattic maps, links to organizations</p>
+          
+          <p>
+            The aim of deep mapping [re]settlement in Mumbai is to bring forth the macro contextual factors of existing and proposed resettlement locations that affects the everyday life of the inhabitants.<small>[i.]</small>  This online, interactive map aims to be <strong>a tool for local organisations, activists and the beneficiaries to set criterias and to make informed decisions in relation to the selection of locations for [re]settlement.</strong>  By visualizing the macro factors that influences the ecologies of the given locations, the map brings forth the urgency to address different aspects of vulnerability, that should be considered during such a life transforming process.</p>
+          <p>The identified vulnerability factors can be classified as: Environmental, Social and Economical.  The Environmental factors such as the nature and composition of the geographical terrain, proximity to protected areas [Coastal regulation Zones: deltas, ,mangroves and so on.  The Social factors can further be classified into two, one which includes proximity to hazardous locations such as dumping grounds, Nuclear reactor and industries, while the other is access to civic amenities and basic services, the impact of [re]settlem through oral histories.  The Economical factors can be measured in relation to pre and post resettlement locations, the distance between the two, proximities to affordable transportation systems and the availability of economic opportunities near the resettled location.  By illustrating the three factors the deep map intendants to highlight the formation of a restricted geography, one that leads to clustering of previously segregated and marginalized communities. 
+The concentration of existing and proposed [re]settlement projects is clearly evident through the visualization.  Further the concentration of theses settlements in far off locations is leading to geographical segregation of communities which primarily have been socially and culturally segregated.  
+          </p>
+          <p><small>[i.]</small> “<strong>Deep maps </strong>are finely detailed, multimedia depictions of a place and the people, buildings, objects, flora, and fauna that exist within it and which are inseparable from the activities of everyday life. These depictions may encompass the beliefs, desires, hopes, and fears of residents and help show what ties one place to another. A deep map is a way to engage evidence within its spatio-temporal context and to provide a platform for a spatially-embedded argument.” -
+<small>David Bodenhamer, John Corrigan, Trevor Harris, "Deep Maps and Spatial Narratives", (Indiana University Press, 2015)</small></p>
         </div>
  
         <div id="tab3" class="tab">
@@ -668,9 +671,10 @@ The ways in which we, as humans perceive our own existence and relations is shap
         </div>
  
         <div id="tab5" class="tab">
-            <p>Who I am: </p>
-            <p>Get in touch</p>
-            <p>Share</p>
+            <p><strong>Shibani Jadhav </strong>is a designer, researcher and an urban practitioner from India. She is currently pursuing her Masters Degree in Design and Urban Ecologies at Parsons The New School. Her practice engages with urban processes that shapes the ecologies of everyday lives, to create scenario that uphold inclusion within lived environments.  Shibani enjoys travelling, web mapping and running.</p>
+<p>
+For more information, suggestions or collaboration please get in touch via email: <strong>jadhavshibani@gmail.com</strong> </p>
+            
             
              
         </div>
@@ -680,4 +684,4 @@ The ways in which we, as humans perceive our own existence and relations is shap
   </body>
 </html>
 
-<!-- <h2><img width="100" height="30" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/About%20tab.png"/></h2> -->
+
