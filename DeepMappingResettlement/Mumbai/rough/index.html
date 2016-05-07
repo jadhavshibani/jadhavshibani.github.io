@@ -142,20 +142,26 @@
         $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_man_made_vulnerable_location.geojson').done (function (data) {layer3 = L.geoJson(data, {  
         
           
-          // Add a popup to each "layer" (shape in the GeoJSON)
+          
+   // Add a popup to each "layer" (shape in the GeoJSON)
             
       onEachFeature: function (feature, layer) {
       layer.on('click', function () {
-                $('.sidebar').html(  feature.properties.name  + 
+        var content1 = feature.properties.name  + 
                                    '</p><p>' + feature.properties.subtype + 
                                    '</p><p>'+feature.properties.activity + 
-                                   '</p><p><a target = "_blank" href="' + feature.properties.reference_1 + '">' + feature.properties.ref_1_names + '</a>' +
-                                   '</p><p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>'
-                                  ).show();
+                                   '</p><p><a target = "_blank" href="' + feature.properties.reference_1 + '">' + feature.properties.ref_1_names + '</a>' + '</p>'
+
+if(feature.properties.video){
+content1+=
+                                   '<p><iframe width="250" height="154" frameborder="0" allowfullscreen src="'+feature.properties.video +'"></iframe>';
+}
+
+                $('.sidebar').html(  content1 ).show();
       });
         
-       } , 
-          
+       } ,    
+
      
       // You can find all of the styling properties for Leaflet here: http://leafletjs.com/reference.html#path-options
             
