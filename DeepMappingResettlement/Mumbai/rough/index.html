@@ -247,16 +247,17 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
             stroke: false,
             
           };  
-          
           if (feature.properties.type == "delta" ){
             style.color = '#BDE3d7'; 
           }
          
           else if (feature.properties.type == "Salt Pan") {
+            console.log('salt pan!');
+            style.stroke = true;
             style.color = 'grey';
-            style.fillOpacity = 9;
-        style.dashArray = "1,5,1,5";
-             style.weight = 8;
+            style.fillOpacity = 0.1;
+            style.dashArray = "1,5,1,5";
+            style.weight = 4;
           }
         
            return style; 
