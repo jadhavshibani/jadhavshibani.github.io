@@ -1,227 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="//code.jquery.com/jquery-2.1.1.min.js">// load js and cartodb libraries. </script>
-      <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"> </script>
+    <meta charset="utf-8">
+
+    <!-- Load jQuery -->
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Load Leaflet -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     
-<!---Initialize map from CartoDB: create the map and store the data layer for later-->
+    <style>
+      /*
+       * Make the sidebar appear above the map, to the right.
+       */
+      .sidebar {
+        background: white;
+        display: none;
+        position: absolute;
+        right: 15px;
+        padding: 25px;
+        top: 15px;
+        width: 500px;
+        z-index: 5000;
+      }
+    </style>
+
     <script>
-         var dataLayer;
-         $(document).ready(function () {
-         cartodb.createVis('interactive_map', 'https://jadhs825.cartodb.com/api/v2/viz/6b4cc190-ff5a-11e5-9e92-0e5db1731f59/viz.json', {
-            cartodb_logo: false , fullscreen: true , mobile_layout: true })
-  //Initialize layers
-       .done(function (vis, layers) {
-  //  * layers[0] is the base layer (eg OpenStreetMap)
-  //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
-            layerone = layers[1].getSubLayer(0);
-            layertwo = layers[1].getSubLayer(1);
-            layerthree = layers[1].getSubLayer(2);
-            //layerfour = layers[1].getSubLayer(3);
+      /*
+       * Keep the map variable out here so we can access it from
+       * the console.
+       */
+      var map;
+
+      $(document).ready(function () {
+        map = L.map('map').setView([22.543903, 114.088281], 16);
+        
+        // Hide sidebar when map is clicked
+        map.on('click', function () {
+          $('.sidebar').hide();
+        });
+
+        L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+          maxZoom: 18,          
+        }).addTo(map);
+        
+        $.getJSON('https://raw.githubusercontent.com/bendd165/bendd165.github.io/master/final/secondhand_markets.geojson').done (function (data) {
+          layer1 = L.geoJson(data, {
             
-             // load data sets from github.....use the 'RAW' url ....click on RAW to get URL
-            // $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/pre_resettlement_locations_mumbai.geojson')
-            // .done (function(data){
-            //   var dataLayerPreReSettlement = L.geoJson(data);
-            //   dataLayerPreReSettlement .addTo (vis.getNativeMap());
-            // })
-               
-            // dataLayer.setSQL(sql);
-            
- // Tell CartoDB it's okay if there are embedded videos and other
- // files in our infowindow template
-            dataLayer.infowindow.set('sanitizeTemplate', 'false');
-          
- // Tell CartoDB to use our template from above
-            dataLayer.infowindow.set('template', $('#infowindow_template').html());
-          
-          });
+            /*
+             * Instead of adding a popup, put data in sidebar and show it.
+             */
+            onEachFeature: function (feature, layer) {
+              layer.on('click', function () {
+                var content1 = 'Name: ' + feature.properties.name + '</p><p><img src="' + feature.properties.photo01 + '" width=500 </p><p><img src="' + feature.properties.photo02 + '"width=500></p><p><img src="' + feature.properties.photo03 + '" width=500 </p><p><img src="' + feature.properties.photo04 + '" width=500 </p><p><img src="' + feature.properties.photo05 + '" width=500 </p>'
+                
+                $('.sidebar').html(content1).show();
+              });
+            },
+          }).addTo(map);
+        })
       });
     </script>
-    
-<!--- Infowindow : Use {{ my_field }} to get data out of your tables. 
-    Make sure you enable the fields in your map's infowindows.
-    Refer: http://docs.cartodb.com/tutorials/custom_interactivity/
-           http://bl.ocks.org/michellechandra/96d9a6ab39dcb0f4172a-->
-    <script type="infowindow/html" id="infowindow_template">
-      <div class="cartodb-popup v2">
-        <a href="#close" class="cartodb-popup-close-button close">x</a>
-         <div class="cartodb-popup-content-wrapper">
-           <div> {{name}} {{plan}} </div>
-           <div class="cartodb-popup-content">
-           
-            <p>
-            <iframe width="100%" height="100%" src="{{video}}" frameborder="0" allowfullscreen></iframe>
-            </p>
-         </div>
-         </div>
-         <div class="cartodb-popup-tip-container"></div>
-      </div>
-    </script>
-    
-    <!---Tabs:  refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"-->
-    <script>
-      $(document).ready(function() {
-    $('.tabs .tab-links a').on('click', function(e)  {
-        var currentAttrValue = $(this).attr('href');
- // Show/Hide Tabs
-        $('.tabs ' + currentAttrValue).fadeIn(350).siblings().hide();
- // Change/remove current tab to active
-        $(this).parent('li').addClass('active').siblings().removeClass('active');
-        e.preventDefault();
-    });
-});
-    </script>
-    
-<!--- Style me using CSS -->
-    <style>
-       /*----- Web Page -----*/
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-      
-  #main_title {
-      margin-left: 10px;
-      float: left;  
-      background-color: none;
-    }  
-    
-    h2 {
-      position: absolute;
-      padding-left:50px;
-      z-index:1;
-    }
-    
-      /*----- Cartodb Map -----*/
-    #interactive_map {
-        height: 90%;
-        width: 100%;
-        padding-bottom: 7px;
-        clear: both;
-        position:relative;
-        z-index:2;
-      }
-      
-       /*----- Infowindow -----*/
-       div.cartodb-popup.v2 div.cartodb-popup-content-wrapper {
-        background: black;
-        color: white;
-      }
-      
-      div.cartodb-popup.v2:before {
-        border-top-color: black;
-      }
-      
-      div.cartodb-popup p {
-        color: white;
-      }
-      
-      /*----- Tabs -----*/
-.tabs {
-    width:100%;
-    display:inline-block;
-    text-decoration:none;
-}
-
-    /*----- Tab Links -----*/
-    .tab-links:after {
-        display:block;
-        clear:both;
-        content:'';
-    }
-    .tab-links li {
-        margin:0px 5px;
-        list-style:none;
-        float:left;
-    }
-        .tab-links a {
-            padding:9px 15px;
-            display:inline-block;
-            background:#000000;
-            font-size:16px;
-            font-weight:600;
-            color:#FFFFFF;
-            transition:all linear 0.15s;
-            text-decoration:none;
-        }
-        .tab-links a:hover {
-            background:#00D4D4;
-            text-decoration:none;
-        }
-    li.active a, li.active a:hover {
-        background:#00D4D4;
-        color:#4c4c4c;
-        text-decoration:underline;
-    }
-    
-    /*----- Content of Tabs -----*/
-    .tab-content {
-        padding:15px;
-        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
-        background:#fff;
-    }
-        .tab {
-            display:none;
-        }
-        .tab.active {
-            display:block;
-        }
-    </style>
   </head>
-  
   <body>
-    <div id="interactive_map">
-      <h2> [RE]settlement</h2>
-    </div>
-    
-      <!--<div class="main_title"> -->
-      <!--  <h2> [RE]settlement</h2>-->
-      <!--</div>-->
-      
-      <div class="tabs">
-    <ul class="tab-links">
-        <!--<li class="active"><a href="#tab1">About</a></li>-->
-        <li><a href="#tab1">About</a></li>
-        <li><a href="#tab2">Supporting Information</a></li>
-        <li><a href="#tab3">Methodology</a></li>
-        <li><a href="#tab4">Next Steps</a></li>
-        <li><a href="#tab5">Get Involved</a></li>
-        
-    </ul>
- 
-    <div class="tab-content">
-        <!--<div id="tab1" class="tab active">-->
-         <div id="tab1" class="tab">
-            <p>Aim, context. What it matters?</p>
-        </div>
- 
-        <div id="tab2" class="tab">
-            <p>stattic maps, links to organizations</p>
-        </div>
- 
-        <div id="tab3" class="tab">
-            <p>Mapping technique</p>
-            <p>project methodology</p>
-        </div>
-        
-        <div id="tab4" class="tab">
-            <p>Next Steps</p>
-        </div>
- 
-        <div id="tab5" class="tab">
-            <p>Who I am: </p>
-            <p>Get in touch</p>
-            <p>Share</p>
-            
-             
-        </div>
-    </div>
-</div>
-
+    <div id="map"></div>
+    <div class="sidebar"></div>
   </body>
 </html>
 
