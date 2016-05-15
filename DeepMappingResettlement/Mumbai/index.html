@@ -50,6 +50,7 @@
        L.tileLayer('https://api.mapbox.com/styles/v1/jadhs825/cimuy6ra40097ahnpwvynhou7/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFkaHM4MjUiLCJhIjoiY2ltcXp3em9sMDBybnVubTRzem12NTR4YyJ9.Cb5AthZ_DTeyquDljjvHBQ').addTo(map);
   
         
+           
         
 // ---------------------------------------------------------------------------------
       // Add data loaded from GitHub.....layer1 = pre to post resettlement locations
@@ -234,7 +235,9 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
         // ---------------------------------------------------------------------------------        
       // Add data loaded from GitHub.....layer5 = natural resources   
 // --------------------------------------------------------------------------------- 
-        $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_natural_resources.geojson').done (function (data) {layer5 = L.geoJson(data, {  
+        $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/mumbai_natural_resources.geojson').done (function (data) {
+          data.features = data.features.reverse();
+          layer5 = L.geoJson(data, {  
             
        
  // You can find all of the styling properties for Leaflet here:http://leafletjs.com/reference.html#path-options
@@ -251,7 +254,6 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
           }
          
           else if (feature.properties.type == "Salt Pan") {
-            console.log('salt pan!');
             style.stroke = true;
             style.color = 'grey';
             style.fillOpacity = 0.1;
@@ -266,6 +268,9 @@ content3+='<p><img width="250" height="200"src="'+feature.properties.plan + '"><
             // Add a popup to each "layer" (shape in the GeoJSON)
             
       onEachFeature: function (feature, layer) {
+          if (feature.properties.type === "Salt Pan") {
+            //layer.bringToFront();
+          }
        layer.on('click', function () {
          var content = feature.properties.name + 
                                    '</p>';
@@ -683,6 +688,5 @@ For more information, suggestions or collaboration please get in touch via email
 
   </body>
 </html>
-
 
 
