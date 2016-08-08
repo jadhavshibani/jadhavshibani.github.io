@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <!-- Load jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"> </script>
+    
+    <!-- Load Leaflet -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    
+    <link rel="stylesheet" href="../css/styledLayerControl.css" />
+    <script src="../src/styledLayerControl.js"></script>
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    
+   <!------------------------------------------------------------------------------------->
+   <!--Add base map-->
+   <!--------------------------------------------------------------------------------->
+    
+    <script>
+      var map;
+      
+      $(document).ready(function () {
+//Create the map
+      map = L.map('map').setView([19.10, 72.89], 12);
+        
+// Hide sidebar when map is clicked
+        map.on('click', function () {
+          $('.sidebar').hide();
+        });
+        
+//Add base tiles 
+       L.tileLayer('https://api.mapbox.com/styles/v1/jadhs825/cimuy6ra40097ahnpwvynhou7/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFkaHM4MjUiLCJhIjoiY2ltcXp3em9sMDBybnVubTRzem12NTR4YyJ9.Cb5AthZ_DTeyquDljjvHBQ').addTo(map);
+  
+    
+      });
+        
+      
+    </script>
+  
+<!--- Style me using CSS -->
+    <style>
+       /*----- Web Page -----*/
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      
+       #map{ width: 100%; 
+             height: 90%; min-height: 90%; 
+             position: relative;
+             z-index:2;
+       }
+      
+      #main_title {
+      margin-left: 10px;
+      float: left;  
+      background-color: none;
+    }  
+    
+    h2 {
+      padding:10px;
+      margin:10px;
+      z-index:1;
+      background-color: none;
+    }
+      
+      
+    </style>
+  </head>
+  
+  <body>
+      <h2><img width="180" height="180" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/DeepMappingResettlement/Mumbai/map%20title.png"/></h2>
+    <div id="map">
+    </div>    
+  </body>
+</html>
+
+
 
