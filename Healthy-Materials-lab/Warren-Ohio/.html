@@ -15,29 +15,62 @@
     
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
     
+    <link rel="stylesheet" href="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+     <script src="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
+    
    <!------------------------------------------------------------------------------------->
    <!--Add base map-->
    <!--------------------------------------------------------------------------------->
     
     <script>
       var map;
+      var layer1;
       
       $(document).ready(function () {
 //Create the map
       map = L.map('map').setView([41.237557, -80.818417], 15);
         
 // Hide sidebar when map is clicked
-        map.on('click', function () {
-          $('.sidebar').hide();
-        });
+       // map.on('click', function () {
+       //   $('.sidebar').hide();
+      //  });
         
 //Add base tiles 
        L.tileLayer('https://api.mapbox.com/styles/v1/jadhs825/cimuy6ra40097ahnpwvynhou7/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFkaHM4MjUiLCJhIjoiY2ltcXp3em9sMDBybnVubTRzem12NTR4YyJ9.Cb5AthZ_DTeyquDljjvHBQ').addTo(map);
   
-    
+                    
+// ---------------------------------------------------------------------------------        
+      // Add data loaded from GitHub.....layer1 = warren ohio soil samples 08:11:2016.geojson
+// ---------------------------------------------------------------------------------
+          $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/warren%20ohio%20soil%20samples%2008%3A11%3A2016.geojson').done (function (data) {layer2 = L.geoJson(data, {  
+      // Create circles instead of standard markers
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+            
+    /*
+             * Add a popup to each "layer" (shape in the GeoJSON),
+             * in this case the popup simply contains the NAME property.
+             */
+            onEachFeature: function (feature, layer) {
+              layer.bindPopup(feature.properties.address);
+            },
+            
+            // styling properties for Leaflet here:http://leafletjs.com/reference.html#path-options
+        style:function (feature) {
+        var stylepoint = {
+            fillColor: false,
+            fillOpacity: 0,
+            radius:  5,
+            stroke: true,
+            color : 'teal'
+          }; 
+           return stylepoint; 
+          } 
+          }).addTo(map);
+        })
       });
-        
-      
     </script>
   
 <!--- Style me using CSS -->
@@ -66,7 +99,7 @@
       width:64px;
       height:64px;
       margin:0 auto;
-      padding-top: 15px;
+      padding-top: 20px;
       z-index:1;
       background-color: none;
     }
@@ -75,9 +108,22 @@
    
         width:445px;
         margin: 0 auto;
-        padding:20px;
+        padding:30px;
       
       }
+    /* Make the sidebar appear above the map, to the right. */
+       
+   /*   .sidebar {
+        background: white;
+        opacity: 0.85;
+        display: none;
+        position: absolute;
+        left: 10px;
+        padding: 15px;
+        top: 35%;
+        width: 250px;
+        z-index: 2;
+      }   
       
     </style>
   </head>
@@ -86,7 +132,10 @@
       <h2><img width="64" height="64" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/The%20Yellow%20Dot.png"/></h2>
       <h3><img width="445" height ="50" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/HML%20title.png"/></h2>
        
-    <div id="map">
+    <div id="map"> </div>
+        <!-- sidebar -->
+   <!-- <div class="sidebar"></div> -->
+      
     </div>    
   </body>
 </html>
