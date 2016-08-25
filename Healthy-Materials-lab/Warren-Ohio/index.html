@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="draft 3 HML">
+    <meta name="description" content="draft 4 HML">
     <!-- Load jQuery -->
     <script src="//code.jquery.com/jquery-2.1.1.min.js"> </script>
     
@@ -50,7 +50,7 @@
     pointToLayer: function(feature,latlng){
       
       var marker = L.marker(latlng,{icon: houseIcon});
-  marker.bindPopup('<strong>Location: </strong>'+ feature.properties.address 
+  marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
                               + "<p></p><strong>Sample 1: </strong>"+ feature.properties.sample_1 + ' Pb'
                             + "</br><strong> Sample 2: </strong>"+ feature.properties.sample_2 + ' Pb'
                              + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
@@ -88,7 +88,7 @@
     L.geoJson(data,{
     pointToLayer: function(feature,latlng){
 	  var marker = L.marker(latlng,{icon: gardenIcon});
-  marker.bindPopup('<strong>Location: </strong>'+ feature.properties.address 
+  marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
                               + "<p></p><strong>Sample 1: </strong>"+ feature.properties.sample_1 + ' Pb'
                             + "</br><strong> Sample 2: </strong>"+ feature.properties.sample_2 + ' Pb'
                              + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
