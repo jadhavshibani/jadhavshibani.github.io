@@ -57,11 +57,11 @@
   marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
                               + '</p><strong>Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">' +feature.properties.sample_1 + ' Pb' + '</a>' 
                             + '</br><strong> Sample 2: </strong><a target = "_blank" href="'+ feature.properties.sample_2_url + '">'+ feature.properties.sample_2 + ' Pb' + '</a>'
-                             + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
-                            + "</br><strong>Sample 4: </strong>"+ feature.properties.sample_4 + ' Pb'
-                            + "</br><strong> Sample 5: </strong>"+ feature.properties.sample_5 + ' Pb'
-                             + "</br><strong>Sample 6: </strong>"+ feature.properties.sample_6 + ' Pb'
-                            + "</br><strong> Sample 7: </strong>"+ feature.properties.sample_7 + ' Pb'
+                             + '</br><strong> Sample 3: </strong><a target = "_blank" href="'+ feature.properties.sample_3_url + '">'+ feature.properties.sample_3 + ' Pb' + '</a>'
+                            + '</br><strong> Sample 4: </strong><a target = "_blank" href="'+ feature.properties.sample_4_url + '">'+ feature.properties.sample_4 + ' Pb' + '</a>'
+                           + '</br><strong> Sample 5: </strong><a target = "_blank" href="'+ feature.properties.sample_5_url + '">'+ feature.properties.sample_5 + ' Pb' + '</a>'
+                            + '</br><strong> Sample 6: </strong><a target = "_blank" href="'+ feature.properties.sample_6_url + '">'+ feature.properties.sample_6 + ' Pb' + '</a>'
+                           + '</br><strong> Sample 7: </strong><a target = "_blank" href="'+ feature.properties.sample_7_url + '">'+ feature.properties.sample_7 + ' Pb' + '</a>'
                              + "</br><strong>Sample 8: </strong>"+ feature.properties.sample_8 + ' Pb'
                             + "</br><strong>Sample 9: </strong>"+ feature.properties.sample_9 + ' Pb'
                             + "</br><strong> Sample 10: </strong>"+ feature.properties.sample_10 + ' Pb'
@@ -93,8 +93,8 @@
     pointToLayer: function(feature,latlng){
 	  var marker = L.marker(latlng,{icon: gardenIcon});
   marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
-                              + "<p></p><strong>Sample 1: </strong>"+ feature.properties.sample_1 +  'Pb'
-                            + "</br><strong> Sample 2: </strong>"+ feature.properties.sample_2 + ' Pb'
+                              + '</p><strong> Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">'+ feature.properties.sample_1 + ' Pb' + '</a>'
+                            + '</br><strong> Sample 2: </strong><a target = "_blank" href="'+ feature.properties.sample_2_url + '">'+ feature.properties.sample_2 + ' Pb' + '</a>'
                              + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
                             + "</br><strong>Sample 4: </strong>"+ feature.properties.sample_4 + ' Pb'
                             + "</br><strong> Sample 5: </strong>"+ feature.properties.sample_5 + ' Pb'
