@@ -49,9 +49,13 @@
             L.geoJson(data,{
     pointToLayer: function(feature,latlng){
       
+      //-- '</p><p><a target = "_blank" href="' + 
+    //--  feature.properties.reference_1 + '">' + 
+    //--    feature.properties.ref_1_names + '</a>' + '</p>'
+      
       var marker = L.marker(latlng,{icon: houseIcon});
   marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
-                              + "<p></p><strong>Sample 1: </strong>"+ feature.properties.sample_1 + ' Pb'
+                              + '</p><strong>Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">' +feature.properties.sample_1 + ' Pb' + '</a>' 
                             + "</br><strong> Sample 2: </strong>"+ feature.properties.sample_2 + ' Pb'
                              + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
                             + "</br><strong>Sample 4: </strong>"+ feature.properties.sample_4 + ' Pb'
@@ -89,7 +93,7 @@
     pointToLayer: function(feature,latlng){
 	  var marker = L.marker(latlng,{icon: gardenIcon});
   marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
-                              + "<p></p><strong>Sample 1: </strong>"+ feature.properties.sample_1 + ' Pb'
+                              + "<p></p><strong>Sample 1: </strong>"+ feature.properties.sample_1 +  'Pb'
                             + "</br><strong> Sample 2: </strong>"+ feature.properties.sample_2 + ' Pb'
                              + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
                             + "</br><strong>Sample 4: </strong>"+ feature.properties.sample_4 + ' Pb'
