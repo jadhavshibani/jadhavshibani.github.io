@@ -80,34 +80,33 @@
 // ---------------------------------------------------------------------------------        
       // Add data loaded from GitHub.....layer1 = warren_ohio_garden.geojson
 // --------------------------------------------------------------------------------- 
-    $.getJSON("https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/hml_warren_ohio_garden.geojson",function(data){
+//--   $.getJSON("https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/hml_warren_ohio_garden.geojson",function(data){
     
-      var gardenIcon = L.icon({
-    iconUrl: 'https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/Garden%20icon.png',
-    iconSize: [40,35]
-  });
+//--      var gardenIcon = L.icon({
+//--    iconUrl: 'https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/Garden%20icon.png',
+//--    iconSize: [40,35]
+//--  });
       
       
       // add GeoJSON layer to the map 
-    L.geoJson(data,{
-    pointToLayer: function(feature,latlng){
-	  var marker = L.marker(latlng,{icon: gardenIcon});
-  marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
-                              + '</p><strong> Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">'+ feature.properties.sample_1 + ' Pb' + '</a>'
-                            + '</br><strong> Sample 2: </strong><a target = "_blank" href="'+ feature.properties.sample_2_url + '">'+ feature.properties.sample_2 + ' Pb' + '</a>'
-                             + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
-                            + "</br><strong>Sample 4: </strong>"+ feature.properties.sample_4 + ' Pb'
-                            + "</br><strong> Sample 5: </strong>"+ feature.properties.sample_5 + ' Pb'
-                             + "</br><strong>Sample 6: </strong>"+ feature.properties.sample_6 + ' Pb'
-                            + "</br><strong> Sample 7: </strong>"+ feature.properties.sample_7 + ' Pb');
-  return marker;
-    }
-  }
-            ).addTo(map);
-  });
-  
-  
-    </script>
+//--    L.geoJson(data,{
+//--    pointToLayer: function(feature,latlng){
+//--	  var marker = L.marker(latlng,{icon: gardenIcon});
+//--  marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
+//--                              + '</p><strong> Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">'+ feature.properties.sample_1 + ' Pb' + '</a>'
+//--                            + '</br><strong> Sample 2: </strong><a target = "_blank" href="'+ feature.properties.sample_2_url + '">'+ feature.properties.sample_2 + ' Pb' + '</a>'
+//--                             + "</br><strong>Sample 3: </strong>"+ feature.properties.sample_3 + ' Pb'
+//--                            + "</br><strong>Sample 4: </strong>"+ feature.properties.sample_4 + ' Pb'
+//--                            + "</br><strong> Sample 5: </strong>"+ feature.properties.sample_5 + ' Pb'
+//--                             + "</br><strong>Sample 6: </strong>"+ feature.properties.sample_6 + ' Pb'
+//--                            + "</br><strong> Sample 7: </strong>"+ feature.properties.sample_7 + ' Pb');
+//--  return marker;
+//--    }
+//--  }
+//--            ).addTo(map);
+//--  });
+
+  </script>
     
 <!-----------------------------------------------------------------------------------   -->
      <!---Tabs:  refer:"http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery"-->
