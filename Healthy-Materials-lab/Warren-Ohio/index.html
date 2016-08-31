@@ -63,13 +63,13 @@
                            + '</br><strong> Sample 5: </strong><a target = "_blank" href="'+ feature.properties.sample_5_url + '">'+ feature.properties.sample_5 + ' Pb' + '</a>'
                             + '</br><strong> Sample 6: </strong><a target = "_blank" href="'+ feature.properties.sample_6_url + '">'+ feature.properties.sample_6 + ' Pb' + '</a>'
                            + '</br><strong> Sample 7: </strong><a target = "_blank" href="'+ feature.properties.sample_7_url + '">'+ feature.properties.sample_7 + ' Pb' + '</a>'
-                             + '</br><strong> Sample 8: </strong><a target = "_blank" href="'+ feature.properties.sample_8_url + '">'+ feature.properties.sample_8 + ' Pb' + '</a>'
-                            + '</br><strong> Sample 9: </strong><a target = "_blank" href="'+ feature.properties.sample_9_url + '">'+ feature.properties.sample_9 + ' Pb' + '</a>'
-                            + '</br><strong> Sample 10: </strong><a target = "_blank" href="'+ feature.properties.sample_10_url + '">'+ feature.properties.sample_10 + ' Pb' + '</a>'
-                             + '</br><strong> Sample 11: </strong><a target = "_blank" href="'+ feature.properties.sample_11_url + '">'+ feature.properties.sample_11 + ' Pb' + '</a>'
-                            + '</br><strong> Sample 12: </strong><a target = "_blank" href="'+ feature.properties.sample_12_url + '">'+ feature.properties.sample_12 + ' Pb' + '</a>'
-                            + '</br><strong> Sample 13: </strong><a target = "_blank" href="'+ feature.properties.sample_13_url + '">'+ feature.properties.sample_13 + ' Pb' + '</a>'
-                             + '</br><strong> Sample 14: </strong><a target = "_blank" href="'+ feature.properties.sample_14_url + '">'+ feature.properties.sample_14 + ' Pb' + '</a>');
+                             + "</br><strong>Sample 8: </strong>"+ feature.properties.sample_8 + ' Pb'
+                            + "</br><strong>Sample 9: </strong>"+ feature.properties.sample_9 + ' Pb'
+                            + "</br><strong> Sample 10: </strong>"+ feature.properties.sample_10 + ' Pb'
+                             + "</br><strong>Sample 11: </strong>"+ feature.properties.sample_11 + ' Pb'
+                            + "</br><strong>Sample 12: </strong>"+ feature.properties.sample_12 + ' Pb'
+                            + "</br><strong> Sample 13: </strong>"+ feature.properties.sample_13 + ' Pb'
+                             + "</br><strong>Sample 14: </strong>"+ feature.properties.sample_14 + ' Pb');
   return marker;
     }
   }
@@ -145,18 +145,11 @@
              z-index:2;
        }
       
-      h3 {
-   
-        width:340px;
-        margin: none;
-        padding:none;
-      
-      }
-      
         #container {
    width: inherit;
    height: inherit;
-   background:white;       
+   background:white;
+          overflow:auto;
    } 
       
       .ui.ui-right {
@@ -210,6 +203,7 @@
         height:100%;
       width: 323px;
         background:white;
+        
     }
         .tab {
             display:none;
@@ -223,7 +217,7 @@
   <body>
     <!---wrapper-->
     <div id="container">
-      <h3><img width="100%" height ="100%" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/HML%20logo.png"/></h3>
+      <img width="340" height ="170" src="https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/HML%20logo.png"/>
       <p>Brief description of the project.</br>[in one to two sentences.]</p>
       <div id='map'></div>
 
@@ -256,12 +250,28 @@
        </div> -->
        
        <div id="tab4" class="tab">
-         <p><li>Acceptable Lead levels, average levels.</li></p>
-         <p><li>Sampling Protocal </li></p>
-         <p><li>Details of sampling(Dates and test lab details) </li></p>
-         <p><li>Method(s) of collecting smaples </li></p>
-         <p><li>Disclaimer(s) if any </li></p>
+         <p><strong>Test Results for Soil Samples of Houses in Warren, Ohio.</strong>
+         </br>Soil Sampling was conducted on June 7th and July 23rd, 2016 in a number of house and garden sites in Warren, Ohio. Soil collection led by Healthy Materials Lab from Parsons School of design following protocols approved by the testing facility. 
+       </p><p><strong>Soil testing Facility: </strong>
+        </br>Environmental Sciences Analytical Center Brooklyn College
+</br>2900 Bedford Avenue,
+  </br>Brooklyn, NY. 11210</p>
 
+<p><strong>Lead scientists:</strong>
+</br>Zhongqi (Joshua) Cheng, PhD
+</br>Chair and Associate Professor
+</br>Department of Earth and Environmental Sciences.
+</br>zcheng@brooklyn.cuny.edu</p>
+
+<p>Tatiana Morin, Director
+</br>NYC Urban Soils Institute
+</br>www.usi.nyc, tel:646.847.7763</p>
+
+
+<p><strong>Standards for reference:</strong>
+</br>The US EPA requires soil remediation of lead levels over 400ppm for residential properties. The Ohio EPA follows this standard.
+</br>The New York State Department of Environmental Conservation requires all agricultural soil clean up at 200ppm.
+</p>
        </div>
        
        <div id="tab5" class="tab">
