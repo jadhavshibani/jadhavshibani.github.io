@@ -54,7 +54,8 @@
     //--    feature.properties.ref_1_names + '</a>' + '</p>'
       
       var marker = L.marker(latlng,{icon: houseIcon});
-  marker.bindPopup('<strong>Location: </strong>xxx'//-- + feature.properties.address 
+  marker.bindPopup('<strong>Location: </strong><a target = "_blank" href="'+ feature.properties.address_plan + '">'+'xxx' + '</a>' ' 
+   //--'<strong>Location: </strong><a target = "_blank" href="'+ feature.properties.address_plan + '">' + feature.properties.address + ' Pb' + '</a>' '
                               + '</p><strong>Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">' +feature.properties.sample_1 + ' Pb' + '</a>' 
                             + '</br><strong> Sample 2: </strong><a target = "_blank" href="'+ feature.properties.sample_2_url + '">'+ feature.properties.sample_2 + ' Pb' + '</a>'
                              + '</br><strong> Sample 3: </strong><a target = "_blank" href="'+ feature.properties.sample_3_url + '">'+ feature.properties.sample_3 + ' Pb' + '</a>'
