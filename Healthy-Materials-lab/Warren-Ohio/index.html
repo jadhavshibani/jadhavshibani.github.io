@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="draft 5 HML">
+    <meta name="description" content="seperte home layers">
     <!-- Load jQuery -->
     <script src="//code.jquery.com/jquery-2.1.1.min.js"> </script>
     
@@ -37,9 +37,9 @@
   
                     
 // ---------------------------------------------------------------------------------        
-      // Add data loaded from GitHub.....layer1 = warren_ohio_home.geojson
+      // Add data loaded from GitHub.....layer1 = warren_ohio_736_Mahoning.geojson
 // ---------------------------------------------------------------------------------
-          $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/hml_warren_ohio_home.geojson',function (data) {
+          $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/hml_warren_ohio_736_Mahoning.geojson',function (data) {
             
             var houseIcon = L.icon({
     iconUrl: 'https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/house%20icon.png',
@@ -73,6 +73,39 @@
                      
                      ).addTo(map);
           })
+      });
+      
+                          
+// ---------------------------------------------------------------------------------        
+      // Add data loaded from GitHub.....layer1 = warren_ohio_except_736_Mahoning.geojson
+// ---------------------------------------------------------------------------------
+          $.getJSON('https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/hml_warren_ohio_except_736_Mahoning.geojson',function (data) {
+            
+            var houseIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/jadhavshibani/jadhavshibani.github.io/master/Healthy-Materials-lab/house%20icon.png',
+    iconSize: [50,45]
+  });
+            
+            L.geoJson(data,{
+    pointToLayer: function(feature,latlng){
+      
+      //-- '</p><p><a target = "_blank" href="' + 
+    //--  feature.properties.reference_1 + '">' + 
+    //--    feature.properties.ref_1_names + '</a>' + '</p>'
+      
+      var marker = L.marker(latlng,{icon: houseIcon});
+  marker.bindPopup('<strong>Location: </strong><a target = "_blank" href="'+ feature.properties.address_plan + '">'+'xxx' + '</a>' 
+   //--'<strong>Location: </strong><a target = "_blank" href="'+ feature.properties.address_plan + '">' + feature.properties.address + ' Pb' + '</a>' '
+                              + '</p><strong>Sample 1: </strong><a target = "_blank" href="'+ feature.properties.sample_1_url + '">' +feature.properties.sample_1 + ' Pb' + '</a>' 
+                            + '</br><strong> Sample 2: </strong><a target = "_blank" href="'+ feature.properties.sample_2_url + '">'+ feature.properties.sample_2 + ' Pb' + '</a>'
+                             + '</br><strong> Sample 3: </strong><a target = "_blank" href="'+ feature.properties.sample_3_url + '">'+ feature.properties.sample_3 + ' Pb' + '</a>'
+                            + '</br><strong> Sample 4: </strong><a target = "_blank" href="'+ feature.properties.sample_4_url + '">'+ feature.properties.sample_4 + ' Pb' + '</a>');
+  return marker;
+    }
+  }
+                     
+                     ).addTo(map);
+        
       });
       
 // ---------------------------------------------------------------------------------        
